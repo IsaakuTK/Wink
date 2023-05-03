@@ -15,19 +15,21 @@ class Bar extends HTMLElement{
         render() {
             if (this.shadowRoot) {
                 this.shadowRoot.innerHTML = `
-                <section class="busq">
+                <section class="all">
                 <img class="logo" src="../src/fotos/Wink.png">
 
                 <input  class="input" type="text"  placeholder="Search in Wink.">   
 
-                <button class="search"></button>
+                <section class="things">
                 <button class="icon"></button>
                 <button class="perf"></button>
                 </section>
+
+                </section>
                 `;
                 const css = this.ownerDocument.createElement("style");
-            css.innerHTML = styles;
-            this.shadowRoot?.appendChild(css);
+                css.innerHTML = styles;
+                this.shadowRoot?.appendChild(css);
             }
         }
 }

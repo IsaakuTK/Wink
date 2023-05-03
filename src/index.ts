@@ -1,6 +1,7 @@
 import "./components/export"
 import "./screens/dashboard"
 import "./screens/published"
+import "./screens/profile"
 
 class AppContainer extends HTMLElement {
     constructor(){
@@ -13,7 +14,7 @@ class AppContainer extends HTMLElement {
     }
 
     render() {
-        const something = this.ownerDocument.createElement('app-published');
+        const something = this.ownerDocument.createElement('app-profile');
         this.shadowRoot?.appendChild(something);
     }
 }
