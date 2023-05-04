@@ -1,8 +1,7 @@
 import "./components/export"
 import "./screens/export"
-import { addObserver, appState } from "./store/index";
+import { addObserver, appState, dispatch } from "./store/index";
 import { Screens } from "./types/store";
-
 
 class AppContainer extends HTMLElement {
     constructor(){
@@ -16,21 +15,30 @@ class AppContainer extends HTMLElement {
     }
 
     render() {
-        if(this.shadowRoot) this.shadowRoot.innerHTML='';
+        if(this.shadowRoot) this.shadowRoot.innerHTML="";
 
         switch (appState.screen) {
+
             case Screens.DASHBOARD:
                 const Dasboard = this.ownerDocument.createElement('app-dashboard');
                 this.shadowRoot?.appendChild(Dasboard);
                 break;
+
             case Screens.LOGIN:
-                const Profile = this.ownerDocument.createElement('app-profile');
+                const Profile = this.ownerDocument.createElement('app-login');
                 this.shadowRoot?.appendChild(Profile);
+                break;
 
             case Screens.PUBLISHED:
                 const Published = this.ownerDocument.createElement('app-published');
                 this.shadowRoot?.appendChild(Published);
-        
+                break;
+
+            case Screens.PROFILE:
+            const profile = this.ownerDocument.createElement('app-profile');
+            this.shadowRoot?.appendChild(profile);
+                break;
+                
             default:
                 break;
         }

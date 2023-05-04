@@ -7,7 +7,16 @@
     position: fixed;    
     width: fit-content;             
     z-index: 9999;
+    transition: top 0.3s ease-in-out;
     }
+      
+      .all--hidden {
+        top: -500px; /* ajustar este valor para ocultar completamente la barra */
+      }
+      
+      .sall--visible {
+        top: 0;
+      }
 
     .input {
         margin-top: 5%;

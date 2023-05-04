@@ -23,7 +23,6 @@ export default class Profile extends HTMLElement{
             profileCard.setAttribute(Attribute.countcomments, String(user.countcomments));
             profileCard.setAttribute(Attribute.countrepost, String(user.countrepost));
             profileCard.addEventListener("click", () => console.log(user.countlikes));
-            console.log(user.countlikes)
             this.posts.push(profileCard);
         });
         }
