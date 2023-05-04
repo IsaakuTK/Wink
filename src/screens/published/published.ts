@@ -1,10 +1,10 @@
 import styles from './published.css';
-import dataR from "../mocks/dataR";
-import Reel, {Attribute} from "../components/reel/reel";
+import dataR from "../../mocks/dataR";
+import Reel, {Attribute} from "../../components/reel/reel";
 
 
 
-class Published extends HTMLElement{
+export default class Published extends HTMLElement{
     reels : Reel[]=[];
 
     constructor(){

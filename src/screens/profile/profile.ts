@@ -1,10 +1,10 @@
 import styles from './profile.css';
-import data from "../mocks/data";
-import  Tpost, { Attribute } from "../components/tpost/tpost";
+import data from "../../mocks/data";
+import  Tpost, { Attribute } from "../../components/tpost/tpost";
 
 
 
-class Profile extends HTMLElement{
+export default class Profile extends HTMLElement{
     posts: Tpost[]=[];
 
     constructor(){

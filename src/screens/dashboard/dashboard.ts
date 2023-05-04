@@ -1,14 +1,14 @@
-import data from "../mocks/data";
-import  Tpost, { Attribute } from "../components/tpost/tpost";
-import dataT from "../mocks/dataT";
-import suggested, { Atributos} from "../components/suggested/index";
-import dataS from "../mocks/dataS";
-import trending, {attribute} from "../components/trending/index";
+import data from "../../mocks/data";
+import  Tpost, { Attribute } from "../../components/tpost/tpost";
+import dataT from "../../mocks/dataT";
+import suggested, { Atributos} from "../../components/suggested/index";
+import dataS from "../../mocks/dataS";
+import trending, {attribute} from "../../components/trending/index";
 import styles from './dashboad.css';
 
 
 
-class Dashboard extends HTMLElement{
+export default class Dashboard extends HTMLElement{
 
     posts: Tpost[]=[];
     Trending: trending[]=[];
