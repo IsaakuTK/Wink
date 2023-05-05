@@ -52,12 +52,16 @@ export default class Profile extends HTMLElement{
                 post.appendChild(this.posts[index]);
             } 
 
+            const downbar = this.ownerDocument.createElement("my-downbar");
+            downbar.className = "downbar";
+            
             const all= this.ownerDocument.createElement("section");
-
+            
             all.className="all";
             all.appendChild(follo);
             all.appendChild(follow);
             all.appendChild(post);
+            all.appendChild(downbar);
             
 
             const allofall= this.ownerDocument.createElement("section");

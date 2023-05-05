@@ -1,5 +1,5 @@
-import { Data } from "../types/dataR";
-const data: Data[] =[
+import { DataR } from "../types/dataR";
+const data: DataR[] =[
     {
         image: "https://picsum.photos/300/300?random=1"
     },

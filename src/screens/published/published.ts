@@ -43,10 +43,14 @@ export default class Published extends HTMLElement{
                 re.appendChild(this.reels[index]);
             }
 
+            const downbar = this.ownerDocument.createElement("my-downbar");
+            downbar.className = "downbar";
+
             const all= this.ownerDocument.createElement("section");
             all.appendChild(an2);
             this.shadowRoot?.appendChild(all);
             this.shadowRoot?.appendChild(re);
+            this.shadowRoot?.appendChild(downbar);
 
 
             const css = this.ownerDocument.createElement("style");

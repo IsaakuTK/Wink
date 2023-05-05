@@ -6,7 +6,11 @@
     margin-top: 10px;
 }
 
-@media only screen and (max-width: 390px){
+.downbar{
+    display: none;
+}
+
+@media only screen and (max-width: 400px){
 .reel{
     display: flex;
     flex-direction: row;
@@ -24,5 +28,9 @@
         justify-content: center;
         display: flex;
         width: 380px;
+    }
+
+    .downbar{
+        display: flex;
     }
 }

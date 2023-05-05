@@ -34,6 +34,10 @@ margin-bottom: 5%;
     border: 8px solid #8C651C;
 }
 
+.downbar{
+    display: none;
+}
+
 @media only screen and (max-width: 390px) {
     .allofall{
         display: flex;
@@ -72,5 +76,11 @@ margin-bottom: 5%;
 
         .post{
             width: 390px;
+            margin-left: 10%;
+            padding-bottom: 30%;
+        }
+
+        .downbar{
+            display: flex;
         }
 }

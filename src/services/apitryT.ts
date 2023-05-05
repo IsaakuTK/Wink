@@ -1,5 +1,5 @@
 import { DataT } from "../types/dataT";
-import data from "../mocks/dataR";
+import data from "../mocks/dataT";
 
 class Data {
   async get(): Promise<DataT[]> {

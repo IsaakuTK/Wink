@@ -1,5 +1,5 @@
-import { Data } from "../types/dataS";
-const data: Data[] =[
+import { DataS } from "../types/dataS";
+const data: DataS[] =[
     {
         name: "Tecnología"
     },
