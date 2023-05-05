@@ -78,28 +78,22 @@ class Tpost extends HTMLElement{
                         <img class="prof" src="${this.profile}">
                         <p class = "us">${this.user}</p>
                         </section>    
-
                         <p class="ndd">${this.description}</p>
-
                     </section>
                 <img class ="pimg" src="${this.image}">
                     <section class = "nd">  
-
                     <section class="s">
                     <button class="likes"></button>
                     <p class="p1">${this.countlikes}</p>
                     </section>
-
                     <section class="s">
                     <button class="comments"></button>
                     <p class="p1">${this.countcomments}</p>
                     </section>
-
                     <section class="s">
                     <button class="repost"></button>
                     <p class="p1">${this.countrepost}</p>
                     </section>
-
                     </section>
                 </section>
                 `;

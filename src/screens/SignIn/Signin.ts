@@ -28,11 +28,18 @@ export default class singin extends HTMLElement {
             const css = this.ownerDocument.createElement('style')
                 css.innerHTML = styles
                 this.shadowRoot?.appendChild(css);
-
+                
             const form = this.ownerDocument.createElement('section')
+            form.className = " all"
 
             const ac = this.ownerDocument.createElement('my-singing');
-            this.shadowRoot?.appendChild(ac);
+            ac.className = "section"
+            
+          form.appendChild(ac)
+          
+            this.shadowRoot?.appendChild(form)
+
+            
 
         }
     }

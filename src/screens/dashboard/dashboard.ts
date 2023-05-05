@@ -1,8 +1,8 @@
-import data from "../../mocks/data";
+import data from "../../services/apitry";
 import  Tpost, { Attribute } from "../../components/tpost/tpost";
-import dataT from "../../mocks/dataT";
+import dataTs from "../../services/apitryT";
 import suggested, { Atributos} from "../../components/suggested/index";
-import dataS from "../../mocks/dataS";
+import dataSs from "../../services/apitryS";
 import trending, {attribute} from "../../components/trending/index";
 import styles from './dashboad.css';
 
@@ -19,7 +19,12 @@ export default class Dashboard extends HTMLElement{
         super();
         this.attachShadow({mode:"open"});
 
-        data.forEach((user) => {
+        }
+
+    async connectedCallback() {
+
+        const dat = await data.get();
+        dat?.forEach((user) => {
             const profileCard = this.ownerDocument.createElement(
                 "my-post"
                 ) as Tpost;
@@ -35,25 +40,27 @@ export default class Dashboard extends HTMLElement{
                 this.posts.push(profileCard);
             });
 
+            const dataT = await dataTs.get();
 
-            dataT.forEach((user) => {
+            dataT?.forEach((user) => {
                 const trend = this.ownerDocument.createElement(
-                    "my-trend"
-                    ) as trending;
-                    trend.setAttribute(attribute.name, user.name);
-                    this.Trending.push(trend);
-                });
+                "my-trend"
+                ) as trending;
+                trend.setAttribute(attribute.name, user.name);
+                this.Trending.push(trend);
+            });
 
-            dataS.forEach((user) => {
+            const dataS = await dataSs.get();
+
+            dataS?.forEach((user) => {
                 const sugest = this.ownerDocument.createElement(
                     "my-suggested"
                     ) as suggested;
                     sugest.setAttribute(Atributos.name, user.name);
                     this.Suggested.push(sugest);
                  });
-        }
+            
 
-    connectedCallback() {
         this.render();
     }
     

@@ -26,8 +26,16 @@ export default class singin extends HTMLElement{
             if(this.shadowRoot){
                 this.shadowRoot.innerHTML=``;
 
+            
+
+                const accounts = this.ownerDocument.createElement('h3')
+                accounts.innerText = 'Sign in '
+                accounts.className = "title"
+                this.shadowRoot?.appendChild(accounts)
+
                 const email = this.ownerDocument.createElement("input")
                 email.placeholder = "email"
+                email.className = "input"
                 email.addEventListener(
                     "change",
                     (e: any) => (credentials.email = e.target.value)
@@ -38,6 +46,7 @@ export default class singin extends HTMLElement{
                 const password = this.ownerDocument.createElement("input")
                 password.placeholder = "password"
                 password.type= "password"
+                password.className = "input"
                 password.addEventListener(
                     "change",
                     (e: any) => (credentials.password = e.target.value)
@@ -45,7 +54,10 @@ export default class singin extends HTMLElement{
                 this.shadowRoot?.appendChild(password)
 
 
-                const button = this.ownerDocument.createElement('my-button');
+                const button = this.ownerDocument.createElement('button');
+                button.className = "Button fourth";
+                button.innerText = "Register";
+
             button.addEventListener('click', ()=>{
                 dispatch(
                     addNewTrip({
@@ -61,6 +73,10 @@ export default class singin extends HTMLElement{
 
             const account = this.ownerDocument.createElement('h3')
             account.innerText = 'Already have an account?'
+            account.className = "title2"
+            account.addEventListener('click', ()=>{
+                dispatch(navigate(Screens.LOGIN));
+            })
             this.shadowRoot?.appendChild(account)
 
 

@@ -1,3 +1,3 @@
-export interface Data {
+export interface DataR {
     image:string;
 }

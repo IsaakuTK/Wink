@@ -1,10 +1,8 @@
+import { navigate } from "../../store/actions";
+import { dispatch } from "../../store/index";
+import { Screens } from "../../types/store";
 import styles from "./index.css"
-export enum ATRS{
-
-    "placeholder"="placeholder",
-    "type" = "type"
-
-}
+const credentials = { email: "", password: "" };
 export default class login extends HTMLElement{
 
     placeholder?:string
@@ -15,44 +13,61 @@ export default class login extends HTMLElement{
         this.attachShadow({mode:"open"});
     }
 
-    static get observedAttributes(){
-        const attrs: Record<ATRS, null> = {
-            placeholder: null,
-            type: null
-        }
-        return Object.keys(attrs)
-    }
-
-    attributeChangedCallback(
-        propName:ATRS   ,
-        _:unknown,
-        newValue:string,
-    ){
-        switch (propName) {
-            default:
-                this[propName] = newValue
-                break;
-        }
-    }
-
     connectedCallback() {
         this.render();
       }
 
 
-        render(){
-            if(this.shadowRoot){
-                this.shadowRoot.innerHTML=``;
+      render(){
+        if(this.shadowRoot){
+            this.shadowRoot.innerHTML=``;
 
-                const input = this.ownerDocument.createElement("input")
-                input.placeholder = `${this.placeholder}`
-                input.type= `${this.type}`
-                this.shadowRoot?.appendChild(input)
+        
 
-                const css = this.ownerDocument.createElement("style");
-                css.innerHTML = styles;
-                this.shadowRoot?.appendChild(css);
-            }
+            const accounts = this.ownerDocument.createElement('h3')
+        accounts.innerText = 'Log In'
+        accounts.className = "title"
+        this.shadowRoot?.appendChild(accounts)
+
+            const email = this.ownerDocument.createElement("input")
+            email.placeholder = "email"
+            email.className = "input"
+            email.addEventListener(
+                "change",
+                (e: any) => (credentials.email = e.target.value)
+              );
+            this.shadowRoot?.appendChild(email)
+            
+
+            const password = this.ownerDocument.createElement("input")
+            password.placeholder = "password"
+            password.type= "password"
+            password.className = "input"
+            password.addEventListener(
+                "change",
+                (e: any) => (credentials.password = e.target.value)
+              );
+            this.shadowRoot?.appendChild(password)
+
+
+            const button = this.ownerDocument.createElement('button');
+            button.className = "Button fourth";
+            button.textContent="Get Into";
+        this.shadowRoot?.appendChild(button)
+
+        const account = this.ownerDocument.createElement('h3')
+        account.innerText = 'Dont have an account yet?'
+        account.className = "title2"
+        account.addEventListener('click', ()=>{
+            dispatch(navigate(Screens.SIGNIN));
+        })
+        this.shadowRoot?.appendChild(account)
+
+
+            const css = this.ownerDocument.createElement("style");
+            css.innerHTML = styles;
+            this.shadowRoot?.appendChild(css);
         }
+    }
 }
 customElements.define("my-login", login);

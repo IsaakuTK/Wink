@@ -1,5 +1,5 @@
 import styles from './profile.css';
-import data from "../../mocks/data";
+import datas from "../../services/apitry"
 import  Tpost, { Attribute } from "../../components/tpost/tpost";
 
 
@@ -10,24 +10,26 @@ export default class Profile extends HTMLElement{
     constructor(){
         super();
         this.attachShadow({mode:"open"});
-
-        data.forEach((user) => {
-        const profileCard = this.ownerDocument.createElement(
-            "my-post"
-            ) as Tpost;
-            profileCard.setAttribute(Attribute.profile, user.profile);
-            profileCard.setAttribute(Attribute.user, String(user.user));
-            profileCard.setAttribute(Attribute.description, user.description)
-            profileCard.setAttribute(Attribute.image, user.image);
-            profileCard.setAttribute(Attribute.countlikes, String(user.countlikes));
-            profileCard.setAttribute(Attribute.countcomments, String(user.countcomments));
-            profileCard.setAttribute(Attribute.countrepost, String(user.countrepost));
-            profileCard.addEventListener("click", () => console.log(user.countlikes));
-            this.posts.push(profileCard);
-        });
         }
 
-    connectedCallback() {
+    async connectedCallback() {
+        const data =  await datas.get();
+        
+        data?.forEach((user) => {
+            const profileCard = this.ownerDocument.createElement(
+                "my-post"
+                ) as Tpost;
+                profileCard.setAttribute(Attribute.profile, user.profile);
+                profileCard.setAttribute(Attribute.user, String(user.user));
+                profileCard.setAttribute(Attribute.description, user.description)
+                profileCard.setAttribute(Attribute.image, user.image);
+                profileCard.setAttribute(Attribute.countlikes, String(user.countlikes));
+                profileCard.setAttribute(Attribute.countcomments, String(user.countcomments));
+                profileCard.setAttribute(Attribute.countrepost, String(user.countrepost));
+                profileCard.addEventListener("click", () => console.log(user.countlikes));
+                this.posts.push(profileCard);
+            });
+
         this.render();
     }
     

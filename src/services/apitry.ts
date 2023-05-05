@@ -5,7 +5,7 @@ class Data {
   async get(): Promise<DataShape[]> {
     console.log("starting fetch...");
     const value: DataShape[] = await new Promise((resolve) => {
-      setTimeout(() => resolve(data), 3000);
+      setTimeout(() => resolve(data), 1000);
     });
     return value;
   }

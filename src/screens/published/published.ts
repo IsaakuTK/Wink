@@ -1,5 +1,5 @@
 import styles from './published.css';
-import dataR from "../../mocks/dataR";
+import dataR from "../../services/apitryR";
 import Reel, {Attribute} from "../../components/reel/reel";
 
 
@@ -10,8 +10,12 @@ export default class Published extends HTMLElement{
     constructor(){
         super();
         this.attachShadow({mode:"open"});
+        }
 
-        dataR.forEach((user) => {
+    async connectedCallback() {
+        const data = await dataR.get();
+
+        data?.forEach((user) => {
             const reels = this.ownerDocument.createElement(
                 "my-reel"
                 ) as Reel;
@@ -19,9 +23,7 @@ export default class Published extends HTMLElement{
 
                 this.reels.push(reels);
             });
-        }
 
-    connectedCallback() {
         this.render();
     }
     

@@ -1,4 +1,3 @@
-import { ATRS } from "../../components/LogIn/LogIn";
 import { navigate } from "../../store/actions";
 import { dispatch } from "../../store/index";
 import { Screens } from "../../types/store";
@@ -28,33 +27,14 @@ export default class Login extends HTMLElement {
                 css.innerHTML = styles
                 this.shadowRoot?.appendChild(css);
 
-            const form = this.ownerDocument.createElement('section')
+            const all = this.ownerDocument.createElement('section')
+            all.className = " all"
 
-            const email = this.ownerDocument.createElement('my-login')
-            email.setAttribute(ATRS.placeholder, "Email")
-            email.setAttribute(ATRS.type, "email")
-            form.appendChild(email)
-
-            const password = this.ownerDocument.createElement('my-login')
-            password.setAttribute(ATRS.placeholder, "Password")
-            password.setAttribute(ATRS.type, "password")
-            form.appendChild(password)
-
-            const button = this.ownerDocument.createElement('my-button');
-            button.addEventListener('click', ()=>{
-                dispatch(
-                    navigate(Screens.DASHBOARD)
-                )
-            })
-
-            const account = this.ownerDocument.createElement('h3')
-            account.innerText = 'Already have an account?'
-
-            form.appendChild(button)
-            form.appendChild(account)
-            this.shadowRoot?.appendChild(form)
-
-
+            const l = this.ownerDocument.createElement('my-login')
+            l.className="section";
+            
+            all.appendChild(l)
+            this.shadowRoot?.appendChild(all)
         }
     }
 }
