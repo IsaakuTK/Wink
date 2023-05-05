@@ -97,10 +97,11 @@ button {
     justify-content: center;
 }
 .us{
-    margin-top: 60px;
+    margin-right: 15%;
 }
 .ndd{
-    margin-left: 120px;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 .pimg{
     width: 700px;
@@ -114,19 +115,24 @@ button {
     margin-left: 5px;
     margin-right: 20px;
 }
+.s{
+    display: flex;
+    flex-direction: row;
+}
 
 @media only screen and (max-width: 390px) {
     .all{
-        width: 300px;
-        height: 480px;
+        width: 350px;
+        height: 600px;
         display: flex;
         align-items: center;
-        margin-left: 45px;
     }
 
     .up{
+        width: 350px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
     }
 
     .pimg{
@@ -134,10 +140,11 @@ button {
         height: 250px;
         border-radius: 20px;
         margin-right: 15%;
+        margin-bottom: 15%;
     }
 
     .nd{
-        width: 260px;
+        width: 300px;
     }
 
     .ndd{
@@ -145,7 +152,16 @@ button {
         justify-content: center;
         align-items: center;
         text-align: start;
-        margin-right: 30%;
-        display: none;
+    }
+    .p1{
+    width: 15px;
+    height: 15px;
+    }
+    .s{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 2%;
+        margin-right: 2%;
     }
 }

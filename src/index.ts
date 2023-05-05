@@ -40,7 +40,7 @@ class AppContainer extends HTMLElement {
                 break;
 
                 case Screens.SIGNIN:
-            const a = this.ownerDocument.createElement('my-singin');
+            const a = this.ownerDocument.createElement('my-singi');
             this.shadowRoot?.appendChild(a);
                 break;
                 

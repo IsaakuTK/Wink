@@ -1,8 +1,9 @@
-import { ATRS } from "../../components/LogIn/LogIn";
+import "../../components/Signin/Signin";
+import "../../components/export";
 import { navigate } from "../../store/actions";
 import { dispatch } from "../../store/index";
 import { Screens } from "../../types/store";
-import styles from "./LogIn.css"
+import styles from "./Signin.css"
 
 const credentials = { 
     username: "",
@@ -10,7 +11,7 @@ const credentials = {
     password: ""
 }
 
-class singin extends HTMLElement {
+export default class singin extends HTMLElement {
     constructor(){
         super();
         this.attachShadow({mode: "open"})
@@ -30,33 +31,11 @@ class singin extends HTMLElement {
 
             const form = this.ownerDocument.createElement('section')
 
-            const email = this.ownerDocument.createElement('my-singin')
-            email.setAttribute(ATRS.placeholder, "Email")
-            email.setAttribute(ATRS.type, "email")
-            form.appendChild(email)
-
-            const password = this.ownerDocument.createElement('my-singin')
-            password.setAttribute(ATRS.placeholder, "Password")
-            password.setAttribute(ATRS.type, "password")
-            form.appendChild(password)
-
-            const button = this.ownerDocument.createElement('my-button');
-            button.addEventListener('click', ()=>{
-                dispatch(
-                    navigate(Screens.DASHBOARD)
-                )
-            })
-
-            const account = this.ownerDocument.createElement('h3')
-            account.innerText = 'Already have an account?'
-
-            form.appendChild(button)
-            form.appendChild(account)
-            this.shadowRoot?.appendChild(form)
-
+            const ac = this.ownerDocument.createElement('my-singing');
+            this.shadowRoot?.appendChild(ac);
 
         }
     }
 }
 
-customElements.define('my-singin', singin)
+customElements.define('my-singi', singin)

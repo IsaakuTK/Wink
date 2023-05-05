@@ -11,19 +11,23 @@
         flex-direction: column;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         transition: transform 0.3s ease-out;
+        display: none;
     }
       
       .all--hidden {
         transform: translateY(-100px);
+        display: none;
       }
     
     .input {
+        display: none;
         display: none;
       }
       
       .input:focus {
         outline-offset: 3px;
-        background-color: #fff
+        background-color: #fff;
+        display: none;
       }
     
     .buttonss {
@@ -33,6 +37,7 @@
     .buttonimg{
         width: 15px;
         height: 15px;
+        display: none;
     }
     
     
@@ -70,6 +75,7 @@
         width: 75px;
         justify-content: center;
         align-items: center;
+        display: none;
     }
     
     .things{
@@ -77,6 +83,7 @@
         flex-direction: row;
         justify-content: flex-end;
         padding-left: 10%;
+        display: none;
     }
     
     .reel{
@@ -85,16 +92,19 @@
         margin: 0 auto;
         justify-content: center;
         margin-top: 5px;
+        display: none;
     }
     
     .img{
         width: 100px;
         height: 100px;
+        display: none;
     }
     
     .but{
         margin-left: 2px;
         margin-right: 2px;
+        display: none;
     }
     
     button {
@@ -110,12 +120,9 @@
         font-weight: 600;
         color: #606060;
         text-shadow: 0 1px #fff;
+        display: none;
       }
       
-      button:hover {
-        box-shadow: 0 2px 1.5px
-      }
-
 }
 
 

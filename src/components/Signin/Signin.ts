@@ -1,14 +1,14 @@
+import { addNewTrip, navigate } from '../../store/actions';
+import { dispatch } from '../../store/index';
+import { Screens } from '../../types/store';
 import styles from './Signin.css'
 
-export enum ATR{
 
-    "placeholder"="placeholder",
-    "type" = "type"
+const credentials = { email: "", password: "" };
 
-}
 export default class singin extends HTMLElement{
 
-    placeholder?:string
+    texto?:string
     type?:string
 
     constructor(){
@@ -16,25 +16,6 @@ export default class singin extends HTMLElement{
         this.attachShadow({mode:"open"});
     }
 
-    static get observedAttributes(){
-        const attrs: Record<ATR, null> = {
-            placeholder: null,
-            type: null
-        }
-        return Object.keys(attrs)
-    }
-
-    attributeChangedCallback(
-        propName:ATR   ,
-        _:unknown,
-        newValue:string,
-    ){
-        switch (propName) {
-            default:
-                this[propName] = newValue
-                break;
-        }
-    }
 
     connectedCallback() {
         this.render();
@@ -45,10 +26,43 @@ export default class singin extends HTMLElement{
             if(this.shadowRoot){
                 this.shadowRoot.innerHTML=``;
 
-                const input = this.ownerDocument.createElement("input")
-                input.placeholder = `${this.placeholder}`
-                input.type= `${this.type}`
-                this.shadowRoot?.appendChild(input)
+                const email = this.ownerDocument.createElement("input")
+                email.placeholder = "email"
+                email.addEventListener(
+                    "change",
+                    (e: any) => (credentials.email = e.target.value)
+                  );
+                this.shadowRoot?.appendChild(email)
+                
+
+                const password = this.ownerDocument.createElement("input")
+                password.placeholder = "password"
+                password.type= "password"
+                password.addEventListener(
+                    "change",
+                    (e: any) => (credentials.password = e.target.value)
+                  );
+                this.shadowRoot?.appendChild(password)
+
+
+                const button = this.ownerDocument.createElement('my-button');
+            button.addEventListener('click', ()=>{
+                dispatch(
+                    addNewTrip({
+                        payload:{
+                            email: String(credentials.email),
+                            password: String(credentials.password),
+                        }
+                    })    
+                )
+                dispatch(navigate(Screens.DASHBOARD));
+            })
+            this.shadowRoot?.appendChild(button)
+
+            const account = this.ownerDocument.createElement('h3')
+            account.innerText = 'Already have an account?'
+            this.shadowRoot?.appendChild(account)
+
 
                 const css = this.ownerDocument.createElement("style");
                 css.innerHTML = styles;
@@ -56,4 +70,4 @@ export default class singin extends HTMLElement{
             }
         }
 }
-customElements.define("my-singin", singin);
+customElements.define("my-singing", singin);

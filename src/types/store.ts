@@ -1,3 +1,5 @@
+import { Trip } from "./trips";
+
 export type Observer = { render: () => void } & HTMLElement;
 
 export enum Screens {
@@ -10,10 +12,49 @@ export enum Screens {
 
 export type AppState = {
   screen: Screens;
+
+  user: {
+    userName: string;
+    email: string;
+  }
+  trips: Trip[],
 };
+
+
+export enum TripsActions {
+  "ADD" = "ADD",
+  "GET" = "GET",
+}
+
+
+export enum AuthActions {
+  "LOGIN" = "LOGIN",
+  "LOGOUT" = "LOGOUT",
+}
 
 export enum NavigationActions {
   "NAVIGATE" = "NAVIGATE",
+}
+
+
+export interface AddTripAction {
+  action: TripsActions.ADD,
+  payload: Trip
+}
+
+export interface GetTripsAction {
+  action: TripsActions.GET,
+  payload: Trip[]
+}
+
+export interface LogInAction {
+  action: AuthActions.LOGIN,
+  payload: Pick<AppState, "user">
+}
+
+export interface LogOutAction {
+  action: AuthActions.LOGOUT,
+  payload: void
 }
 
 export interface NavigateAction {
@@ -21,4 +62,8 @@ export interface NavigateAction {
   payload: Screens;
 }
 
-export type Actions = NavigateAction;
+export type Actions = 
+NavigateAction
+|LogInAction
+|LogOutAction
+|AddTripAction;

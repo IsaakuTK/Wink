@@ -90,6 +90,9 @@ export default class Dashboard extends HTMLElement{
             trendtittle.textContent="Hashtags Trends"
             trend.appendChild(trendtittle)
 
+            const downbar = this.ownerDocument.createElement("my-downbar");
+            downbar.className = "downbar";
+
             this.Trending.forEach((profile) => {
                 trend.appendChild(profile);
             });
@@ -99,6 +102,7 @@ export default class Dashboard extends HTMLElement{
             all.appendChild(trend);
             all.appendChild(post);
             all.appendChild(sugest);
+            all.appendChild(downbar);
             
             this.shadowRoot?.appendChild(all);
 

@@ -4,6 +4,11 @@ import { reducer } from "./reducer";
 
 const emptyState: AppState = {
   screen: Screens.SIGNIN,
+  user:{
+    userName: "",
+    email: "",
+  },
+  trips: [],
 };
 
 export let appState = Storage.get<AppState>({

@@ -10,7 +10,7 @@ const credentials = {
     password: ""
 }
 
-class Login extends HTMLElement {
+export default class Login extends HTMLElement {
     constructor(){
         super();
         this.attachShadow({mode: "open"})
