@@ -6,3 +6,5 @@ export {default as Publish} from "./publish/index";
 export {default as Rell} from "./reel/reel";
 export {default as followers} from "./followers/followers";
 export {default as Downprof} from "./downprof/downprof"; 
+export {default as login} from "./LogIn/LogIn"; 
+export {default as singin} from "./Signin/Signin"; 

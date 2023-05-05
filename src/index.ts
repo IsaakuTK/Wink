@@ -38,6 +38,11 @@ class AppContainer extends HTMLElement {
             const profile = this.ownerDocument.createElement('app-profile');
             this.shadowRoot?.appendChild(profile);
                 break;
+
+                case Screens.SIGNIN:
+            const a = this.ownerDocument.createElement('my-singin');
+            this.shadowRoot?.appendChild(a);
+                break;
                 
             default:
                 break;

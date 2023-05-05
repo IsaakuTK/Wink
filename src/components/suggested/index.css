@@ -1,7 +1,7 @@
 
 
 .section{
-    background-color: #D9BA5F;
+    background-color: #020E26;
     width: 200px;
     height: 50px;
     border-radius: 5px;
@@ -54,27 +54,17 @@ button {
   }
 
 @media screen and (max-width: 400px){
-    .aja{
-        justify-content: center;
-        width: 25%;
-        background-color: white;
-        border-color: transparent;
-        font-size: 25px;
-        justify-content: space-between;
-        
-    
-        
-    }
+
     .section
     {
         
         display: flex;
         flex-direction: column;
-        width: 400px;
+        width:390;
         height: 600px;
         background-color:rgb(85.1%, 85.1%, 85.1%);
         border-radius: 15px;
-     
+     display: none;
     }
     
 }

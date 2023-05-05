@@ -1,6 +1,3 @@
-@media only screen and (max-width: 400px) {
-}
-
 .prof{
     display: flex;
     width: 70px;
@@ -118,3 +115,37 @@ button {
     margin-right: 20px;
 }
 
+@media only screen and (max-width: 390px) {
+    .all{
+        width: 300px;
+        height: 480px;
+        display: flex;
+        align-items: center;
+        margin-left: 45px;
+    }
+
+    .up{
+        display: flex;
+        align-items: center;
+    }
+
+    .pimg{
+        width: 250px;
+        height: 250px;
+        border-radius: 20px;
+        margin-right: 15%;
+    }
+
+    .nd{
+        width: 260px;
+    }
+
+    .ndd{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: start;
+        margin-right: 30%;
+        display: none;
+    }
+}

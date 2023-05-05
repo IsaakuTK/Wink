@@ -1,77 +1,62 @@
-@media only screen and (max-width: 400px) {
-    .all {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color:#D9D9D9;
-    position: fixed;    
-    width: fit-content;             
-    z-index: 9999;
-    transition: top 0.3s ease-in-out;
+@media only screen and (max-width: 390px) {
+    .all{
+        display: flex;
+        background-color:#D9D9D9;
+        align-items:center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;             
+        z-index: 9999;
+        flex-direction: column;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-out;
     }
       
       .all--hidden {
-        top: -500px; /* ajustar este valor para ocultar completamente la barra */
+        transform: translateY(-100px);
+      }
+    
+    .input {
+        display: none;
       }
       
-      .sall--visible {
-        top: 0;
-      }
-
-    .input {
-        margin-top: 5%;
-        margin-right: 35%;
-        width: 40%;
-        border-radius: 10px;
-        outline: 2px solid #FEBF00;
-        border: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        background-color: #e2e2e2;
+      .input:focus {
         outline-offset: 3px;
-        padding: 10px 1rem;
-        transition: 0.25s;
+        background-color: #fff
+      }
+    
+    .buttonss {
+        display: none;
+      }
+    
+    .buttonimg{
+        width: 15px;
+        height: 15px;
     }
     
-    .input:focus {
-        outline-offset: 5px;
-        background-color: #fff
-    }
-
-    .buttonss {
-        position: relative;
-        
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        
-    }
-
-    .buttonimg{
+    
+    .perf{
+        margin-top: 2px;
+        margin-bottom: 2px;
         width: 30px;
         height: 30px;
-    }
-
-
-    .perf{
-        margin-top: 5px;
-        margin-bottom: 5px;
-        width: 65px;
-        height: 65px;
         border-radius: 50%;
         background-image: url('https://static.nationalgeographic.es/files/styles/image_3200/public/01-leonardo-da-vinci-book-talk.jpg?w=1900&h=2279');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         border: none;
-        margin-left: 10px;
-
+        margin-left: 5px;
+        display: none;
     }
-
+    
     .icon{
-        margin-top: 5px;
-        margin-bottom: 5px;
-        width: 65px;
-        height: 65px;
+        display: none;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         background-image: url('https://cdn-icons-png.flaticon.com/512/2740/2740600.png');
         background-size: 100%;
@@ -79,21 +64,57 @@
         background-repeat: no-repeat;
         background-color: #D9D9D9;
         border: none;
-        margin-left:30%;
     }
-
+    
     .logo{
-        width: 150px;
-        margin-right: 15%;
+        width: 75px;
+        justify-content: center;
+        align-items: center;
     }
-
+    
     .things{
-        align-items: center ;
         display: flex;
-        width: 100%;
-        margin-top: 10px;
-        padding-right: 100%;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding-left: 10%;
     }
+    
+    .reel{
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+        justify-content: center;
+        margin-top: 5px;
+    }
+    
+    .img{
+        width: 100px;
+        height: 100px;
+    }
+    
+    .but{
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+    
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline: none;
+        cursor: pointer;
+        border: 1px solid #8F9092;
+        transition: all 0.2s ease;
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 7px;
+        font-weight: 600;
+        color: #606060;
+        text-shadow: 0 1px #fff;
+      }
+      
+      button:hover {
+        box-shadow: 0 2px 1.5px
+      }
 
 }
 

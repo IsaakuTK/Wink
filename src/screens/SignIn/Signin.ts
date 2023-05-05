@@ -10,7 +10,7 @@ const credentials = {
     password: ""
 }
 
-class Login extends HTMLElement {
+class singin extends HTMLElement {
     constructor(){
         super();
         this.attachShadow({mode: "open"})
@@ -30,12 +30,12 @@ class Login extends HTMLElement {
 
             const form = this.ownerDocument.createElement('section')
 
-            const email = this.ownerDocument.createElement('my-login')
+            const email = this.ownerDocument.createElement('my-singin')
             email.setAttribute(ATRS.placeholder, "Email")
             email.setAttribute(ATRS.type, "email")
             form.appendChild(email)
 
-            const password = this.ownerDocument.createElement('my-login')
+            const password = this.ownerDocument.createElement('my-singin')
             password.setAttribute(ATRS.placeholder, "Password")
             password.setAttribute(ATRS.type, "password")
             form.appendChild(password)
@@ -59,4 +59,4 @@ class Login extends HTMLElement {
     }
 }
 
-customElements.define('app-login', Login)
+customElements.define('my-singin', singin)

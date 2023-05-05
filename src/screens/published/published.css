@@ -5,3 +5,24 @@
     justify-content: center;
     margin-top: 10px;
 }
+
+@media only screen and (max-width: 390px){
+.reel{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    overflow-x: scroll;
+    width: 380px;
+    height: 300px;
+    }
+
+    .all{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        width: 380px;
+    }
+}
