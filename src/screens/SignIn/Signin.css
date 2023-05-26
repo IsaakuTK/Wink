@@ -17,6 +17,12 @@
     background-color: #020E26;
     width: 100%;
     height: 100%;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .section {
@@ -72,7 +78,7 @@
    }
    
    .section:hover .card-info {
-    color: #f7ba2b;
+    color: #020E26;
     transition: color 1s;
    }
 

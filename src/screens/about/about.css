@@ -1,0 +1,16 @@
+.all{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../../fotos/fondo2.png); 
+    background-size: cover;
+}
+
+.text{
+    justify-content: center;
+    align-items: center;
+    font-display: center;
+    font-size: 30px;
+}

@@ -9,3 +9,4 @@ export {default as Downprof} from "./downprof/downprof";
 export {default as login} from "./LogIn/LogIn"; 
 export {default as singin} from "./Signin/Signin"; 
 export {default as downbar} from "./downbar/downbar"; 
+export {default as bardisplay} from "./bardisplay/bardisplay";

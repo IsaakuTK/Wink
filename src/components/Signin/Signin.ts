@@ -1,4 +1,4 @@
-import { addNewTrip, navigate } from '../../store/actions';
+import { navigate } from '../../store/actions';
 import { dispatch } from '../../store/index';
 import { Screens } from '../../types/store';
 import styles from './Signin.css'
@@ -59,14 +59,14 @@ export default class singin extends HTMLElement{
                 button.innerText = "Register";
 
             button.addEventListener('click', ()=>{
-                dispatch(
-                    addNewTrip({
-                        payload:{
-                            email: String(credentials.email),
-                            password: String(credentials.password),
-                        }
-                    })    
-                )
+                // dispatch(
+                //     addNewTrip({
+                //         payload:{
+                //             email: String(credentials.email),
+                //             password: String(credentials.password),
+                //         }
+                //     })    
+                // )
                 dispatch(navigate(Screens.DASHBOARD));
             })
             this.shadowRoot?.appendChild(button)

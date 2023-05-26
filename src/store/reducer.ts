@@ -1,5 +1,4 @@
-import { Actions, AppState, NavigationActions,AuthActions, TripsActions } from "../types/store";
-import { addNewTrip } from "./actions";
+import { Actions, AppState, NavigationActions, TripsActions } from "../types/store";
 
 export const reducer = (
   currentAction: Actions,
@@ -13,21 +12,6 @@ export const reducer = (
         ...currentState,
         screen: payload,
       };
-
-      case AuthActions.LOGIN:
-        return {
-            ...currentState,
-            user: payload.user
-        }
-
-        case TripsActions.ADD:
-            return {
-                ...currentState,
-                trips: [
-                    payload,
-                    ...currentState.trips,
-                ]
-            }
 
     default:
       return currentState;

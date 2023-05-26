@@ -29,15 +29,19 @@ export default class singin extends HTMLElement {
                 css.innerHTML = styles
                 this.shadowRoot?.appendChild(css);
                 
-            const form = this.ownerDocument.createElement('section')
-            form.className = " all"
+            const all = this.ownerDocument.createElement('section')
+            all.className = " all"
+
+            const bar = this.ownerDocument.createElement("my-bardisplay")
+            bar.className = "bar";
+            all.appendChild(bar)
 
             const ac = this.ownerDocument.createElement('my-singing');
             ac.className = "section"
             
-          form.appendChild(ac)
+            all.appendChild(ac)
           
-            this.shadowRoot?.appendChild(form)
+            this.shadowRoot?.appendChild(all)
 
             
 

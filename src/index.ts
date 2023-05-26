@@ -43,6 +43,16 @@ class AppContainer extends HTMLElement {
             const a = this.ownerDocument.createElement('my-singi');
             this.shadowRoot?.appendChild(a);
                 break;
+
+                case Screens.DISPLAY:
+            const display = this.ownerDocument.createElement('app-display');
+            this.shadowRoot?.appendChild(display);
+                break;
+
+                case Screens.ABOUT:
+            const About = this.ownerDocument.createElement('app-about');
+            this.shadowRoot?.appendChild(About);
+                break;
                 
             default:
                 break;

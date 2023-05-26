@@ -8,16 +8,12 @@ export enum Screens {
   DASHBOARD = "DASHBOARD",
   PUBLISHED = "PUBLISHED",
   PROFILE = "PROFILE",
+  DISPLAY = "DISPLAY",
+  ABOUT = "ABOUT",
 }
 
 export type AppState = {
   screen: Screens;
-
-  user: {
-    userName: string;
-    email: string;
-  }
-  trips: Trip[],
 };
 
 
@@ -26,11 +22,6 @@ export enum TripsActions {
   "GET" = "GET",
 }
 
-
-export enum AuthActions {
-  "LOGIN" = "LOGIN",
-  "LOGOUT" = "LOGOUT",
-}
 
 export enum NavigationActions {
   "NAVIGATE" = "NAVIGATE",
@@ -47,15 +38,7 @@ export interface GetTripsAction {
   payload: Trip[]
 }
 
-export interface LogInAction {
-  action: AuthActions.LOGIN,
-  payload: Pick<AppState, "user">
-}
 
-export interface LogOutAction {
-  action: AuthActions.LOGOUT,
-  payload: void
-}
 
 export interface NavigateAction {
   action: NavigationActions.NAVIGATE;
@@ -64,6 +47,4 @@ export interface NavigateAction {
 
 export type Actions = 
 NavigateAction
-|LogInAction
-|LogOutAction
 |AddTripAction;

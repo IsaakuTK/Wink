@@ -5,7 +5,7 @@ class Data {
   async get(): Promise<DataR[]> {
     console.log("starting fetch...");
     const value: DataR[] = await new Promise((resolve) => {
-      setTimeout(() => resolve(data), 1000);
+      setTimeout(() => resolve(data), 0);
     });
     return value;
   }

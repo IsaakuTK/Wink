@@ -30,6 +30,10 @@ export default class Login extends HTMLElement {
             const all = this.ownerDocument.createElement('section')
             all.className = " all"
 
+            const bar = this.ownerDocument.createElement("my-bardisplay")
+            bar.className = "bar";
+            all.appendChild(bar)
+
             const l = this.ownerDocument.createElement('my-login')
             l.className="section";
             
