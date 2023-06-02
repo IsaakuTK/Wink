@@ -1,16 +1,18 @@
-import { firebaseConfig } from "../firebaseConfig";
+
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 import { Posts } from "../types/posts";
 import {
+  browserSessionPersistence,
   createUserWithEmailAndPassword,
   getAuth,
+  setPersistence,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import firebaseConfig  from "./firebaseconfig";
 
 const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 const registerUser = async ({
   email,
@@ -41,23 +43,19 @@ const loginUser = async ({
 }: {
   email: string;
   password: string;
-}): Promise<boolean> => {
-  try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    console.log(userCredential.user);
-    alert("welcome " + userCredential.user.email);
-    return true;
-  } catch (error: any) {
+})  => {
+  setPersistence(auth,browserSessionPersistence)
+  .then(() => {
+    return signInWithEmailAndPassword(auth,email,password);
+  })
+  .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorCode, errorMessage);
-    return false;
-  }
+    console.log(errorCode,errorMessage);
+  })
 };
+
+
 
 /////////////////////// DB
 const db = getFirestore(app);
@@ -89,4 +87,5 @@ export default {
   getProducts,
   registerUser,
   loginUser,
+
 };

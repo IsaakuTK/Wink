@@ -1,4 +1,4 @@
-import { Trip } from "./trips";
+import { user } from "./trips";
 
 export type Observer = { render: () => void } & HTMLElement;
 
@@ -17,7 +17,7 @@ export type AppState = {
 };
 
 
-export enum TripsActions {
+export enum UserActions {
   "ADD" = "ADD",
   "GET" = "GET",
 }
@@ -28,14 +28,14 @@ export enum NavigationActions {
 }
 
 
-export interface AddTripAction {
-  action: TripsActions.ADD,
-  payload: Trip
+export interface AddUserAction {
+  action: UserActions.ADD,
+  payload: user
 }
 
-export interface GetTripsAction {
-  action: TripsActions.GET,
-  payload: Trip[]
+export interface GetUserAction {
+  action: UserActions.GET,
+  payload: user[]
 }
 
 
@@ -47,4 +47,4 @@ export interface NavigateAction {
 
 export type Actions = 
 NavigateAction
-|AddTripAction;
+|AddUserAction;

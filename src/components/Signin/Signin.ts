@@ -2,6 +2,7 @@ import { navigate } from '../../store/actions';
 import { dispatch } from '../../store/index';
 import { Screens } from '../../types/store';
 import styles from './Signin.css'
+import Firebase from "../../utils/firebase"
 
 
 const credentials = { email: "", password: "" };
@@ -21,7 +22,10 @@ export default class singin extends HTMLElement{
         this.render();
       }
 
-
+async handleRegisterUser(){
+    Firebase.registerUser(credentials)
+    console.log(credentials);
+}
         render(){
             if(this.shadowRoot){
                 this.shadowRoot.innerHTML=``;
@@ -59,14 +63,9 @@ export default class singin extends HTMLElement{
                 button.innerText = "Register";
 
             button.addEventListener('click', ()=>{
-                // dispatch(
-                //     addNewTrip({
-                //         payload:{
-                //             email: String(credentials.email),
-                //             password: String(credentials.password),
-                //         }
-                //     })    
-                // )
+                this.handleRegisterUser()
+                console.log(credentials);
+            
                 dispatch(navigate(Screens.DASHBOARD));
             })
             this.shadowRoot?.appendChild(button)

@@ -1,4 +1,4 @@
-import { NavigateAction, NavigationActions, Screens,  GetTripsAction, AddTripAction, TripsActions } from "../types/store";
+import { NavigateAction, NavigationActions, Screens} from "../types/store";
 
 export const navigate = (screen: Screens): NavigateAction => {
   return {
@@ -6,4 +6,11 @@ export const navigate = (screen: Screens): NavigateAction => {
     payload: screen,
   };
 };
+
+export const setUserCredentials = (user: string) => {
+return {
+  type:"SETUSER",
+  payload: user,
+}
+}
 

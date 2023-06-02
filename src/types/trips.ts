@@ -1,4 +1,4 @@
-export interface Trip {
+export interface user {
     email: string;
     password: string;
 }

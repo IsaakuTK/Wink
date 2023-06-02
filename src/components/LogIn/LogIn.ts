@@ -2,6 +2,8 @@ import { navigate } from "../../store/actions";
 import { dispatch } from "../../store/index";
 import { Screens } from "../../types/store";
 import styles from "./index.css"
+import Firebase from "../../utils/firebase"
+
 const credentials = { email: "", password: "" };
 export default class login extends HTMLElement{
 
@@ -17,6 +19,9 @@ export default class login extends HTMLElement{
         this.render();
       }
 
+      async handleLoginButton(){
+        Firebase.loginUser(credentials);
+      }
 
       render(){
         if(this.shadowRoot){
@@ -49,10 +54,10 @@ export default class login extends HTMLElement{
               );
             this.shadowRoot?.appendChild(password)
 
-
             const button = this.ownerDocument.createElement('button');
             button.className = "Button fourth";
             button.textContent="Get Into";
+            button.addEventListener("click", this.handleLoginButton)
         this.shadowRoot?.appendChild(button)
 
         const account = this.ownerDocument.createElement('h3')
@@ -60,6 +65,7 @@ export default class login extends HTMLElement{
         account.className = "title2"
         account.addEventListener('click', ()=>{
             dispatch(navigate(Screens.SIGNIN));
+            console.log(credentials);
         })
         this.shadowRoot?.appendChild(account)
 

@@ -1,4 +1,4 @@
-import { Actions, AppState, NavigationActions, TripsActions } from "../types/store";
+import { Actions, AppState, NavigationActions, UserActions } from "../types/store";
 
 export const reducer = (
   currentAction: Actions,
@@ -13,7 +13,24 @@ export const reducer = (
         screen: payload,
       };
 
-    default:
-      return currentState;
+      default:
+        return currentState;
   }
+  
+  
 };
+
+// export const reducer = (action: any, prevState: any) => {
+//   switch (action.type) {
+//     case "NAVIGATE":
+//       prevState.screen = action.payload;
+//       break;
+
+//       case "SETUSER":
+//       prevState.user = action.payload;
+//       break;
+//   }
+
+//   return prevState;
+// };
+
