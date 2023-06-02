@@ -1,4 +1,4 @@
-import { user } from "./trips";
+import { user } from "./user";
 
 export type Observer = { render: () => void } & HTMLElement;
 
