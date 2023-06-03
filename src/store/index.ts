@@ -18,6 +18,9 @@ onAuthStateChanged(auth,(user) => {
 
 const emptyState: AppState = {
   screen: Screens.DISPLAY,
+  user: {
+  email: "",
+  password: "",}
 };
 
 

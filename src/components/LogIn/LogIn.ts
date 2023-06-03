@@ -27,7 +27,7 @@ export default class login extends HTMLElement{
         if(this.shadowRoot){
             this.shadowRoot.innerHTML=``;
 
-        
+          
 
             const accounts = this.ownerDocument.createElement('h3')
         accounts.innerText = 'Log In'
