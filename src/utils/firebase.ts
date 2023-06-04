@@ -46,7 +46,10 @@ const loginUser = async ({
 })  => {
   setPersistence(auth,browserSessionPersistence)
   .then(() => {
-    return signInWithEmailAndPassword(auth,email,password);
+    return signInWithEmailAndPassword(
+      auth,
+      email,
+      password)
   })
   .catch((error) => {
     const errorCode = error.code;

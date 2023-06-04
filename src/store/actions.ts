@@ -2,8 +2,6 @@ import { NavigateAction, NavigationActions, Screens,LogInAction,RegisterAction,U
 import { user } from "../types/user";
 import Firebase from "../utils/firebase"
 
-
-
 export const navigate = (screen: Screens): NavigateAction => {
   return {
     action: NavigationActions.NAVIGATE,
