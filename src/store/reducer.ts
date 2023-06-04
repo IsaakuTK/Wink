@@ -1,10 +1,7 @@
-import { Actions, AppState, NavigationActions, UserActions } from "../types/store";
-import { user } from "../types/user";
-
+import { Actions, AppState, NavigationActions,  } from "../types/store";
 export const reducer = (
   currentAction: Actions,
-  currentState: AppState,
-  
+  currentState: AppState
 ): AppState => {
   const { action, payload } = currentAction;
 
@@ -15,27 +12,9 @@ export const reducer = (
         screen: payload,
       };
 
-      case UserActions.LOGIN:
-            currentState.user = payload
-            return currentState
-            
-        case UserActions.REGISTER:
-            currentState.user = payload
-            return currentState 
-
-        case UserActions.LOGOUT: 
-            return {
-                ...currentState , user:{
-                    email: "",
-                    password: "",
-                    
-                }
-            }
-
-
       default:
         return currentState;
-  }
-  
-  
+  }
+  
+  
 };
