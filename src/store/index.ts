@@ -7,9 +7,9 @@ import { auth } from "../utils/firebase";
 import { navigate, setUserCredentials} from "./actions";
 
 
-onAuthStateChanged(auth, (u) => {
+onAuthStateChanged(auth, async(u:any) => {
   if (u) {
-    u.uid !== null ? dispatch(setUserCredentials(u.uid)) : '';
+    u.uid !== null ? dispatch(setUserCredentials(u)) : '';
     appState.user.email = String(u.email);
     appState.user.uid = u.uid;
     dispatch(navigate(Screens.DASHBOARD));

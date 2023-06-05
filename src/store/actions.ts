@@ -1,16 +1,18 @@
-import { Screens } from "../types/store";
+import { User } from "../types/user";
+import { NavigationAction, NavigationActions, Screens, SetUserCredentialsAction, UserActions } from "../types/store";
 
-export const navigate = (screen: Screens) => {
-  return {
-    type: "NAVIGATE",
-    payload: screen,
-  };
-};
+export const navigate = (screen:Screens): NavigationAction =>{
+  return{
+      action: NavigationActions.NAVIGATE,
+      payload: screen,
+  }
+}
 
-export const setUserCredentials = (user: string) => {
+
+export const setUserCredentials = (user: string): SetUserCredentialsAction => {
 return {
-    type: "SETUSER",
-  payload: user,
-  };
-};
+    action: UserActions.SETUSERCREDETIALS,
+    payload: user,
+  }
+}
 

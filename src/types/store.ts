@@ -22,3 +22,32 @@ export type AppState = {
   following: User[],
   userCredentials: String,
 }
+
+export enum NavigationActions{
+  "NAVIGATE"="NAVIGATE",
+}
+
+export interface NavigationAction{
+  action: NavigationActions.NAVIGATE;
+  payload: Screens;
+}
+
+export enum UserActions {
+  "NEWUSER" = "NEWUSER",
+  "SETUSERCREDETIALS" = "SETUSERCREDETIALS",
+}
+
+export interface AddUserAction {
+  action: UserActions.NEWUSER,
+  payload: User
+}
+
+export interface SetUserCredentialsAction {
+  action: UserActions.SETUSERCREDETIALS,
+  payload: String
+}
+
+
+
+
+export type Actions = AddUserAction | NavigationAction | SetUserCredentialsAction ; //|
