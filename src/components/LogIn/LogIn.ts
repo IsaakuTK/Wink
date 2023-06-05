@@ -5,6 +5,7 @@ import styles from "./index.css"
 import Firebase from "../../utils/firebase"
 
 const credentials = { email: "", password: "" };
+
 export default class login extends HTMLElement{
 
     placeholder?:string
@@ -20,14 +21,12 @@ export default class login extends HTMLElement{
       }
 
       async handleLoginButton(){
-        Firebase.loginUser(credentials);
+        await Firebase.loginUser(credentials);
       }
 
       render(){
         if(this.shadowRoot){
             this.shadowRoot.innerHTML=``;
-
-        
 
             const accounts = this.ownerDocument.createElement('h3')
         accounts.innerText = 'Log In'

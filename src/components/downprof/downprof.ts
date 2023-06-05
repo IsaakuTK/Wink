@@ -1,6 +1,7 @@
 import { navigate } from '../../store/actions';
-import { dispatch } from '../../store/index';
+import { appState, dispatch } from '../../store/index';
 import { Screens } from '../../types/store';
+import firebase from '../../utils/firebase';
 import styles from './index.css';
 
 class Downprof extends HTMLElement{
@@ -15,6 +16,14 @@ class Downprof extends HTMLElement{
       }
 
 
+      bye(){
+        if(appState.user !== null || "")
+        console.log("Cierre de sesión exitoso");
+            sessionStorage.clear();
+            localStorage.clear();
+            dispatch(navigate(Screens.LOGIN))
+            location.reload();
+      }
 
         render(){
             if(this.shadowRoot){
@@ -36,7 +45,7 @@ class Downprof extends HTMLElement{
                 b3.className="out"
                 b3.textContent="Log out"
                 b3.addEventListener('click', ()=>{
-                    dispatch(navigate(Screens.LOGIN));
+                    this.bye();
                 })
 
                 all.appendChild(b1);

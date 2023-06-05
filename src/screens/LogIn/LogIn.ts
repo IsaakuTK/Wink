@@ -1,6 +1,3 @@
-import { navigate } from "../../store/actions";
-import { dispatch } from "../../store/index";
-import { Screens } from "../../types/store";
 import styles from "./LogIn.css"
 
 const credentials = { 
