@@ -23,7 +23,7 @@ export default class login extends HTMLElement{
       async handleLoginButton(){
         await Firebase.loginUser(credentials);
         
-        dispatch(loginU())
+        //dispatch(loginU())
       }
 
       render(){
