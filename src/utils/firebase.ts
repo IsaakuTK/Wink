@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
+import { getFirestore, collection, addDoc, setDoc, getDocs, doc, query} from "firebase/firestore";
 // import { Posts } from "../types/posts";
 import {
   browserSessionPersistence,
@@ -8,11 +8,14 @@ import {
   getAuth,
   setPersistence,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
+
 import {firebaseConfig}  from "../firebaseconfig";
-import { dispatch } from "../store";
+import { appState, dispatch } from "../store";
 import { navigate } from "../store/actions";
 import { Screens } from "../types/store";
+import { User } from "../types/user";
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
@@ -48,7 +51,7 @@ const loginUser = async ({
   email: string;
   password: string;
 })  => {
-  setPersistence(auth,browserSessionPersistence)
+  setPersistence(auth, browserSessionPersistence)
   .then(() => {
     return signInWithEmailAndPassword(auth,email,password);
   })
@@ -60,19 +63,33 @@ const loginUser = async ({
 };
 
 
-
 /////////////////////// DB
 const db = getFirestore(app);
 
-// const addUser = async (id: Posts ) => {
-//   try {
-//     const where = collection(db, "User");
-//     await addDoc(where, id);
-//     console.log("se añadió el id user");
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
+const AddUser = async (user: any) =>{
+  try {
+    user.uid = appState.userCredentials.uid
+    await setDoc(doc(db, "users", user.uid), user)
+    return true
+  } catch (e) {
+    console.error("problem adding user: ", e);
+    return false
+  }
+}
+
+const GetUser = async(): Promise<User[]> =>{
+  const resp: User[] = [];
+
+  const theuser=query(collection(db,"users"))
+  const all = await getDocs(theuser);
+  all.forEach((doc) => {
+    console.log(`${doc.id} => ${doc.data()}`);
+    resp.push({
+      ...doc.data()
+    }as User)
+  });
+  return resp
+}
 
 // const addPost = async (post: Omit<Posts, "id">) => {
 //   try {
@@ -97,10 +114,9 @@ const db = getFirestore(app);
 // };
 
 export default {
-  // addUser,
-  // addPost,
-  // getPost,
+  signOut,
   registerUser,
   loginUser,
-
+  AddUser,
+  GetUser,
 };

@@ -1,15 +1,16 @@
-import { navigate } from '../../store/actions';
-import { dispatch } from '../../store/index';
+import { navigate, newUser } from '../../store/actions';
+import { appState, dispatch } from '../../store/index';
 import { Screens } from '../../types/store';
 import styles from './Signin.css'
 import Firebase from "../../utils/firebase"
 import { User } from '../../types/user';
 
 
-const credentials: Omit<User, "uid"> = {
+const credentials: User = {
+    uid: "123",
     username: "",
     email: "",
-    image: "",
+    image: "https://t3.ftcdn.net/jpg/00/64/67/80/360_F_64678017_zUpiZFjj04cnLri7oADnyMH0XBYyQghG.jpg",
     password: "",
   };
   
@@ -30,8 +31,12 @@ export default class singin extends HTMLElement{
       }
 
 async handleRegisterUser(){
+        dispatch(newUser(credentials))
 
-        await Firebase.registerUser(credentials)
+        if(await Firebase.registerUser(credentials)  == true){
+          
+          await Firebase.AddUser(credentials)
+        }
         console.log(credentials);
 }
         render(){
@@ -81,7 +86,6 @@ async handleRegisterUser(){
 
             button.addEventListener('click', ()=>{
                 this.handleRegisterUser()
-                console.log(credentials);
             })
             this.shadowRoot?.appendChild(button)
 

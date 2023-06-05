@@ -1,8 +1,9 @@
-import { navigate } from '../../store/actions';
+import { navigate, setUserCredentials } from '../../store/actions';
 import { appState, dispatch } from '../../store/index';
 import { Screens } from '../../types/store';
 import firebase from '../../utils/firebase';
 import styles from './index.css';
+import { getAuth, signOut } from "firebase/auth";
 
 class Downprof extends HTMLElement{
     constructor(){
@@ -17,12 +18,16 @@ class Downprof extends HTMLElement{
 
 
       bye(){
-        if(appState.user !== null || "")
-        console.log("Cierre de sesión exitoso");
-            sessionStorage.clear();
-            localStorage.clear();
-            dispatch(navigate(Screens.LOGIN))
-            location.reload();
+        dispatch(setUserCredentials(''))    
+        sessionStorage.clear()
+        dispatch(navigate(Screens.LOGIN))
+        location.reload()
+        const auth = getAuth();
+        signOut(auth).then(() => {
+        console.log("BYE")
+        }).catch((error) => {
+        console.error(error)
+        });
       }
 
       edit(){

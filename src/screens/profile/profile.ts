@@ -1,6 +1,8 @@
 import styles from './profile.css';
 import datas from "../../services/apitry"
 import  Tpost, { Attribute } from "../../components/tpost/tpost";
+import  Followers, { Attributes } from "../../components/followers/followers";
+import { appState } from '../../store';
 
 
 
@@ -40,8 +42,10 @@ export default class Profile extends HTMLElement{
             const an = this.ownerDocument.createElement("my-bar");
             this.shadowRoot?.appendChild(an);
 
-            const follo = this.ownerDocument.createElement("my-followers");
+            const follo = this.ownerDocument.createElement("my-followers") as Followers;
             follo.className = "followers";
+            follo.setAttribute(Attributes.image, appState.user.image);
+            follo.setAttribute(Attributes.username, appState.user.username);
             
             const follow = this.ownerDocument.createElement("my-downprof");
             follow.className = "downprof";

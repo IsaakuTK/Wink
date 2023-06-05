@@ -1,6 +1,6 @@
 import styles from './index.css';
 
-export enum Attribute{
+export enum Attributes{
     "image"="image",
     "username"="username",
     "post"="post",
@@ -22,7 +22,7 @@ class Followers extends HTMLElement{
     }
 
     static get observedAttributes(){
-        const attrs: Record<Attribute, null> = {
+        const attrs: Record<Attributes, null> = {
             image: null,
             username: null,
             post: null,
@@ -37,7 +37,7 @@ class Followers extends HTMLElement{
       }
 
       attributeChangedCallback(
-        propName: Attribute,
+        propName: Attributes,
         _: string | undefined,
         newValue: string | undefined
         ) {
@@ -52,10 +52,12 @@ class Followers extends HTMLElement{
 
         render(){
             if(this.shadowRoot){
+
                 this.shadowRoot.innerHTML=`
                 <section class="all">
+
                 <section class="all2">
-                <img ${this.image}>
+                <img class ="image" src="${this.image}">
                 <p>${this.username}</p>
                 </section>
 

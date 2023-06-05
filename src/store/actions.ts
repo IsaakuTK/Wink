@@ -1,5 +1,6 @@
 import { User } from "../types/user";
-import { NavigationAction, NavigationActions, Screens, SetUserCredentialsAction, UserActions } from "../types/store";
+import { LoginAction, NavigationAction, NavigationActions, NewUserAction, Screens, SetUserCredentialsAction, SomeActionsofls, UserActions } from "../types/store";
+import { appState, dispatch } from ".";
 
 export const navigate = (screen:Screens): NavigationAction =>{
   return{
@@ -16,3 +17,17 @@ return {
   }
 }
 
+export const newUser = (user:User): NewUserAction =>{
+  return{
+      action: UserActions.NEWUSER,
+      payload: user,
+  }
+}
+
+
+export const loginU = (user:User): LoginAction =>{
+  return{
+      action: SomeActionsofls.LOGIN,
+      payload: user,
+  }
+}

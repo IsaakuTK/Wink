@@ -15,7 +15,13 @@ export const reducer = (Action: Actions, prevState: AppState) => {
         prevState.userCredentials = payload;
         return prevState
 
-  }
 
-  return prevState;
+      case UserActions.NEWUSER:
+        
+        prevState.user = payload
+        return prevState
+
+        default:
+        return prevState;
+  }
 };
