@@ -53,6 +53,11 @@ class AppContainer extends HTMLElement {
             const About = this.ownerDocument.createElement('app-about');
             this.shadowRoot?.appendChild(About);
                 break;
+            
+                case Screens.EDITPROFILE:
+            const edit = this.ownerDocument.createElement('app-editprofile');
+            this.shadowRoot?.appendChild(edit);
+                break;
                 
             default:
                 break;

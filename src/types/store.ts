@@ -11,6 +11,7 @@ export enum Screens {
   PROFILE = "PROFILE",
   DISPLAY = "DISPLAY",
   ABOUT = "ABOUT",
+  EDITPROFILE = "EDITPROFILE",
 }
 
 export type AppState = {

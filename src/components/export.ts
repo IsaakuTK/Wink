@@ -11,3 +11,4 @@ export {default as singin} from "./Signin/Signin";
 export {default as downbar} from "./downbar/downbar"; 
 export {default as bardisplay} from "./bardisplay/bardisplay";
 export {default as downbart} from "./downbar1/downbar2"; 
+export {default as editprofile} from "./editprofile/editprofile"; 

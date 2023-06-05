@@ -25,6 +25,10 @@ class Downprof extends HTMLElement{
             location.reload();
       }
 
+      edit(){
+            dispatch(navigate(Screens.EDITPROFILE))
+      }
+
         render(){
             if(this.shadowRoot){
                 this.shadowRoot.innerHTML=`
@@ -36,6 +40,9 @@ class Downprof extends HTMLElement{
                 const b1 = this.ownerDocument.createElement("button");
                 b1.className="edit"
                 b1.textContent="Edit profile"
+                b1.addEventListener('click', ()=>{
+                    this.edit();
+                })
 
                 const b2 = this.ownerDocument.createElement("button");
                 b2.className="share"

@@ -1,0 +1,133 @@
+
+.all{
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    justify-content: center;
+}
+
+.section1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #020E26;
+  border-radius: 5%;
+}
+
+  h2{
+  color: white;
+}
+
+h3{
+  color: white;
+}
+
+.but{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin-left: 10%;
+}
+
+button {
+    display: flex;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #8F9092;
+    transition: all 0.2s ease;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #606060;
+    text-shadow: 0 1px #fff;
+  }
+  
+  button:hover {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
+  }
+  
+  button:active {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+  }
+  
+  button:focus {
+    box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+  }
+
+.logo{
+    display: block;
+    margin: 0 auto;
+}
+
+p{
+    display: block;
+    margin: 0 auto;
+    font-size: 150%;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 390px) {
+  .all{
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    }
+    
+    .but{
+      margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin-left: 10%;
+    }
+    
+    button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #8F9092;
+    transition: all 0.2s ease;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 10px; /* Reducir el tamaño de la fuente */
+    font-weight: 600;
+    color: #606060;
+    text-shadow: 0 1px #fff;
+    }
+    
+    button:hover {
+    box-shadow: 0 2px 2px 1px #FCFCFC, 0 3px 4px #D6D7D9, 0 -2px 2px #CECFD1, 0 -3px 2px #FEFEFE, inset 0 0 2px 2px #CECFD1;
+    /* Reducir los valores de sombra para adaptarse a la pantalla más pequeña */
+    }
+    
+    button:active {
+    box-shadow: 0 2px 2px 1px #FCFCFC, 0 3px 4px #D6D7D9, 0 -2px 2px #CECFD1, 0 -3px 2px #FEFEFE, inset 0 0 3px 2px #999, inset 0 0 20px #aaa;
+    /* Reducir los valores de sombra para adaptarse a la pantalla más pequeña */
+    }
+    
+    button:focus {
+    box-shadow: 0 2px 2px 1px #FCFCFC, 0 3px 4px #D6D7D9, 0 -2px 2px #CECFD1, 0 -3px 2px #FEFEFE, inset 0 0 3px 2px #999, inset 0 0 20px #aaa;
+    /* Reducir los valores de sombra para adaptarse a la pantalla más pequeña */
+    }
+    
+    .logo{
+    width:280px;
+    }
+    
+    p{
+    display: block;
+    margin: 0 auto;
+    font-size: 125%; /* Reducir el tamaño de la fuente /
+    margin-bottom: 5px; / Reducir el margen inferior */
+    font-weight: bold;
+    }
+}
