@@ -8,16 +8,9 @@ export const navigate = (screen: Screens) => {
 };
 
 export const setUserCredentials = (user: string) => {
-  return {
+return {
     type: "SETUSER",
-    payload: user,
+  payload: user,
   };
 };
 
-
-export const addUser = (user: string) => {
-  return {
-    type: "SETUSER",
-    payload: user,
-  };
-};
