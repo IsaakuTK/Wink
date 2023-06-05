@@ -105,7 +105,7 @@
            width: 300px;
            margin-left:40px;
            border-radius: 10px;
-           height: 200px;
+           height: 250px;
            position: absolute;
            
            
@@ -132,7 +132,7 @@
        .section {
            --background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
            width: 300px;
-           height: 200px;
+           height: 250px;
            padding: 5px;
            border-radius: 1rem;
            overflow: visible;
@@ -193,4 +193,3 @@
            margin-top: 0px;
           }
    }
-

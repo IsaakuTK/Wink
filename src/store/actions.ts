@@ -1,18 +1,16 @@
-import { NavigateAction, NavigationActions, Screens} from "../types/store";
-import { user } from "../types/user";
-import Firebase from "../utils/firebase"
+import { Screens } from "../types/store";
 
-export const navigate = (screen: Screens): NavigateAction => {
+export const navigate = (screen: Screens) => {
   return {
-    action: NavigationActions.NAVIGATE,
+    type: "NAVIGATE",
     payload: screen,
   };
 };
 
 export const setUserCredentials = (user: string) => {
-  return {
-    type:"SETUSER",
-    payload: user,
-  }
-  }
+return {
+    type: "SETUSER",
+  payload: user,
+  };
+};
 

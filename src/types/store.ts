@@ -1,4 +1,5 @@
-import { user } from "./user";
+import { Post } from "./posts";
+import { User } from "./user";
 
 export type Observer = { render: () => void } & HTMLElement;
 
@@ -13,36 +14,10 @@ export enum Screens {
 }
 
 export type AppState = {
-  screen: Screens;
-  user: user,
-};
-
-export enum UserActions {
-  "ADD" = "ADD",
-  "GET" = "GET"
+  user: User,
+  screen: Screens,
+  posts : Post[],
+  followers: User[],
+  following: User[],
+  userCredentials: String,
 }
-
-export enum NavigationActions {
-  "NAVIGATE" = "NAVIGATE",
-}
-
-export interface AddUserAction {
-  action: UserActions.ADD,
-  payload: user
-}
-
-export interface GetUserAction {
-  action: UserActions.GET,
-  payload: user[]
-}
-
-
-export interface NavigateAction {
-  action: NavigationActions.NAVIGATE;
-  payload: Screens;
-}
-
-export type Actions = 
-NavigateAction
-|AddUserAction
-|GetUserAction;

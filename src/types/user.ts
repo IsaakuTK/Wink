@@ -1,4 +1,7 @@
-export interface user {
+export interface User {
+    uid: string;
+    username: string;
     email: string;
-    password: string;
-}
+    image: string;
+    password: string
+  }

@@ -36,6 +36,7 @@ export default class Published extends HTMLElement{
             
 
             const an2 = this.ownerDocument.createElement("my-publish");
+            an2.className="publish"
             
             const re = this.ownerDocument.createElement("section")
             re.className = "reel";

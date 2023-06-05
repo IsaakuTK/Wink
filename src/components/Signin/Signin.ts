@@ -3,9 +3,16 @@ import { dispatch } from '../../store/index';
 import { Screens } from '../../types/store';
 import styles from './Signin.css'
 import Firebase from "../../utils/firebase"
+import { User } from '../../types/user';
 
 
-const credentials = { email: "", password: "" };
+const credentials: Omit<User, "uid"> = {
+    username: "",
+    email: "",
+    image: "",
+    password: "",
+  };
+  
 
 export default class singin extends HTMLElement{
 
@@ -23,8 +30,9 @@ export default class singin extends HTMLElement{
       }
 
 async handleRegisterUser(){
-    Firebase.registerUser(credentials)
-    console.log(credentials);
+
+        await Firebase.registerUser(credentials)
+        console.log(credentials);
 }
         render(){
             if(this.shadowRoot){
@@ -36,6 +44,15 @@ async handleRegisterUser(){
                 accounts.innerText = 'Sign in '
                 accounts.className = "title"
                 this.shadowRoot?.appendChild(accounts)
+
+                const username = this.ownerDocument.createElement("input")
+                username.placeholder = "username"
+                username.className = "input"
+                username.addEventListener(
+                    "change",
+                    (e: any) => (credentials.username = e.target.value)
+                  );
+                this.shadowRoot?.appendChild(username)
 
                 const email = this.ownerDocument.createElement("input")
                 email.placeholder = "email"
@@ -65,8 +82,6 @@ async handleRegisterUser(){
             button.addEventListener('click', ()=>{
                 this.handleRegisterUser()
                 console.log(credentials);
-            
-                dispatch(navigate(Screens.DASHBOARD));
             })
             this.shadowRoot?.appendChild(button)
 

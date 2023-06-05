@@ -1,12 +1,17 @@
 import styles from './index.css';
 
 export enum Attribute{
+    "image"="image",
+    "username"="username",
     "post"="post",
     "followers"="followers",
     "following"="following"
 }
 
 class Followers extends HTMLElement{
+    
+    image?: string;
+    username?: string;
     post?: string;
     followers?: string;
     following?: string;
@@ -18,6 +23,8 @@ class Followers extends HTMLElement{
 
     static get observedAttributes(){
         const attrs: Record<Attribute, null> = {
+            image: null,
+            username: null,
             post: null,
             followers: null,
             following: null
@@ -47,8 +54,10 @@ class Followers extends HTMLElement{
             if(this.shadowRoot){
                 this.shadowRoot.innerHTML=`
                 <section class="all">
-
-                <img class="img" src="https://static.nationalgeographic.es/files/styles/image_3200/public/01-leonardo-da-vinci-book-talk.jpg?w=1900&h=2279">
+                <section class="all2">
+                <img ${this.image}>
+                <p>${this.username}</p>
+                </section>
 
                 <section class="casiall">
                 <section class="post">
