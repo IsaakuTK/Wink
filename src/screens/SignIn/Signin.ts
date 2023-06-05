@@ -36,6 +36,10 @@ export default class singin extends HTMLElement {
             bar.className = "bar";
             all.appendChild(bar)
 
+            const bar1 = this.ownerDocument.createElement("my-downbart")
+            bar1.className = "bar1";
+            all.appendChild(bar1)
+
             const ac = this.ownerDocument.createElement('my-singing');
             ac.className = "section"
             

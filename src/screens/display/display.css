@@ -8,3 +8,10 @@
     background-size: cover;
 
 }
+
+@media only screen and (max-width: 400px) 
+{
+    .bar{
+        display:none;
+    }
+}

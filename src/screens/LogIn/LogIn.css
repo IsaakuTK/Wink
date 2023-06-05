@@ -172,6 +172,9 @@
             color: #f7ba2b;
             transition: color 1s;
            }
+           .bar{
+            display:none;
+        }
         
            .all{
             background-color: #020E26;

@@ -1,0 +1,45 @@
+@media only screen and (max-width: 400px) {
+    .icon1 {
+      left: 5%;
+      position: fixed;
+      bottom: 1%;
+      width: 70px;
+      height: 70px;
+      margin-right: auto;
+    }
+  
+    .icon2 {
+      position: fixed;
+      left: 38%;
+      bottom: 3%;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      background-color: rgba(0, 0, 0, 0.736);
+      border-radius: 30%;
+    }
+  
+    .icon3 {
+      position: fixed;
+      bottom: 1%;
+      left: 75%;
+      width: 70px;
+      height: 70px;
+      margin-left: auto;
+    }
+      .downbar {
+        margin-bottom: -10%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 15%;
+        width: 100%;
+        background-color:#020E26;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 10;
+      }
+      body{
+          background-color:#020E26;
+      }
+    }

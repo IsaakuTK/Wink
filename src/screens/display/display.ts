@@ -27,6 +27,10 @@ export default class Display extends HTMLElement{
             bar.className = "bar";
             all.appendChild(bar)
 
+            const bar2 = this.ownerDocument.createElement("my-downbart")
+            bar2.className = "bar2";
+            all.appendChild(bar2)
+
             this.shadowRoot.appendChild(all)
 
             const css = this.ownerDocument.createElement("style");
