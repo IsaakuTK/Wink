@@ -4,7 +4,7 @@ import { Observer } from "../types/store";
 import { reducer } from "./reducer";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { navigate, setUserCredentials } from "./actions";
+import { navigate, setUserCredentials} from "./actions";
 
 
 onAuthStateChanged(auth, (u) => {
