@@ -88,6 +88,10 @@
     position: absolute;
     margin-top: 0px;
    }
+
+   .bar1 {
+    display: none;
+   }
    
    @media only screen and (max-width: 390px)
    { 
@@ -116,6 +120,14 @@
            background-color: #020E26;
            background-size: cover;
        }
+
+       .bar{
+        display:none;
+    }
+
+    .bar1{
+        display: contents;
+    }
        
        .section {
            --background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
