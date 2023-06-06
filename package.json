@@ -1,7 +1,7 @@
 {
-  "name": "dca_scoffolding",
+  "name": "Wink",
   "version": "1.0.0",
-  "description": "this is a base project",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "serve",
@@ -14,9 +14,9 @@
     "css-loader": "^6.7.3",
     "serve": "^14.2.0",
     "ts-loader": "^9.4.2",
-    "typescript": "^5.0.2",
-    "webpack": "^5.76.3",
-    "webpack-cli": "^5.0.1"
+    "typescript": "^5.0.4",
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2"
   },
   "dependencies": {
     "firebase": "^9.22.1"

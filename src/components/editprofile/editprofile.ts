@@ -1,7 +1,16 @@
 import { dispatch } from '../../store';
 import { navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
+import { User } from '../../types/user';
 import styles from './editprofile.css';
+
+const credentials: User = {
+    uid: "123",
+    username: "",
+    email: "",
+    image: "https://t3.ftcdn.net/jpg/00/64/67/80/360_F_64678017_zUpiZFjj04cnLri7oADnyMH0XBYyQghG.jpg",
+    password: "",
+  };
 
 class Editprofile extends HTMLElement{
 
@@ -26,14 +35,14 @@ class Editprofile extends HTMLElement{
                 tittle.innerText = "Edit Profile"
                 container.appendChild(tittle)
 
-                const desc = this.ownerDocument.createElement("h3")
-                desc.innerText = "New Username"
-                container.appendChild(desc)
+                const username = this.ownerDocument.createElement("h3")
+                username.innerText = "New Username"
+                container.appendChild(username)
 
-                const descs = this.ownerDocument.createElement("input")
-                descs.placeholder = "Example: elpepe3000"
-                this.shadowRoot?.appendChild (descs);
-                container.appendChild(descs)
+                const iusername = this.ownerDocument.createElement("input")
+                iusername.placeholder = "Example: elpepe3000"
+                iusername.addEventListener("change", (e:any)=>credentials.username = e.target.value);
+                container.appendChild(iusername)
 
                 const subtittle = this.ownerDocument.createElement("h3")
                 subtittle.innerText = "New profile image"

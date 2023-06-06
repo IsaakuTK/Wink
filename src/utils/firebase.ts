@@ -1,17 +1,15 @@
-
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, setDoc, getDocs, doc, query} from "firebase/firestore";
-// import { Posts } from "../types/posts";
+import { getFirestore, collection, addDoc, getDocs, orderBy, query, onSnapshot, where, setDoc, doc} from "firebase/firestore";
 import {
-  browserSessionPersistence,
   createUserWithEmailAndPassword,
   getAuth,
-  setPersistence,
   signInWithEmailAndPassword,
-  signOut,
+  setPersistence,
+  browserSessionPersistence,
+  onAuthStateChanged
 } from "firebase/auth";
 
-import {firebaseConfig}  from "../firebaseconfig";
+import {firebaseConfig} from "../firebaseconfig";
 import { appState, dispatch } from "../store";
 import { navigate } from "../store/actions";
 import { Screens } from "../types/store";
@@ -19,6 +17,8 @@ import { User } from "../types/user";
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+
 
 const registerUser = async ({
   email,
@@ -64,6 +64,7 @@ const loginUser = async ({
 
 
 /////////////////////// DB
+
 const db = getFirestore(app);
 
 const AddUser = async (user: any) =>{
@@ -77,46 +78,42 @@ const AddUser = async (user: any) =>{
   }
 }
 
-const GetUser = async(): Promise<User[]> =>{
-  const resp: User[] = [];
-
+const GetUser = async(): Promise<User> =>{
+  let resp: User ={
+    uid: "",
+    username: "",
+    email: "",
+    image: "",
+    password: "",
+  };
   const theuser=query(collection(db,"users"))
-  const all = await getDocs(theuser);
-  all.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data()}`);
-    resp.push({
-      ...doc.data()
+  const q = query(theuser, where("users", "==", appState.userCredentials.uid));
+  const all = await getDocs(q);
+  all.forEach((u) => {
+    console.log(`${u.id} => ${u.data()}`);
+    resp=({
+      ...u.data()
     }as User)
   });
   return resp
 }
 
-// const addPost = async (post: Omit<Posts, "id">) => {
-//   try {
-//     const where = collection(db, "Post");
-//     await addDoc(where, post);
-//     console.log("se añadió el post");
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
 
-// const getPost = async () => {
-//   const querySnapshot = await getDocs(collection(db, "products"));
-//   const transformed: Array<Posts> = [];
-
-//   querySnapshot.forEach((doc) => {
-//     const data: Omit<Posts, "id"> = doc.data() as any;
-//     transformed.push({ id: doc.id, ...data });
-//   });
-
-//   return transformed;
-// };
+const EditProfile = async (u: User) =>{
+  try {
+    await setDoc (doc(db, "users", u.uid), u)
+    return true
+  } catch (e) {
+    console.error("Error editing document: ", e);
+    return false
+  }
+}
 
 export default {
-  signOut,
   registerUser,
   loginUser,
   AddUser,
   GetUser,
+  EditProfile,
+  onAuthStateChanged
 };

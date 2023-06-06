@@ -1,4 +1,4 @@
-import { Actions, AppState, NavigationActions, UserActions } from "../types/store";
+import { Actions, AppState, NavigationActions, SomeActionsofls, UserActions } from "../types/store";
 
 export const reducer = (Action: Actions, prevState: AppState) => {
   const { action, payload } = Action; 
@@ -21,7 +21,17 @@ export const reducer = (Action: Actions, prevState: AppState) => {
         prevState.user = payload
         return prevState
 
+
+      case SomeActionsofls.LOGIN:
+        
+        prevState.user = payload
+        return prevState
+
         default:
         return prevState;
+
+       case UserActions.EDIT:
+        prevState.user = payload
+            return prevState
   }
 };
