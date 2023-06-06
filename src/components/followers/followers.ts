@@ -58,7 +58,7 @@ class Followers extends HTMLElement{
 
                 <section class="all2">
                 <img class ="image" src="${this.image}">
-                <p>${this.username}</p>
+                <p class="username">${this.username}</p>
                 </section>
 
                 <section class="casiall">

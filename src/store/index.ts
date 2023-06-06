@@ -1,16 +1,18 @@
 import Storage, { PersistanceKeys } from "../utils/storage";
-import { Observer, AppState, Screens } from "../types/store";
+import { Observer, AppState, Screens, Actions } from "../types/store";
 import { reducer } from "./reducer";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../utils/firebase";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { navigate, setUserCredentials} from "./actions";
+import { initializeApp } from "firebase/app";
+import firebaseConfig from "../utils/firebaseConfig";
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 onAuthStateChanged(auth, async(u:any) => {
   
   if (await (u)) {
     u !== null ? dispatch(setUserCredentials(u)) : '';
-    appState.user.email = String(u.email);
-    appState.user.uid = u.uid;
     dispatch(navigate(Screens.DASHBOARD));
   } else {
     dispatch(navigate(Screens.DISPLAY));
@@ -34,7 +36,7 @@ const emptyState : AppState = {
 };
 
 
-export let appState = Storage.get<any>({
+export let appState = Storage.get<AppState>({
   key: PersistanceKeys.STORE,
   defaultValue: emptyState,
 });
@@ -46,7 +48,7 @@ const persistStore = (state: AppState) =>
 
 const notifyObservers = () => observers.forEach((o) => o.render());
 
-export const dispatch = (action: any) => {
+export const dispatch = (action: Actions) => {
   const clone = JSON.parse(JSON.stringify(appState));
   const newState = reducer(action, clone);
   appState = newState;

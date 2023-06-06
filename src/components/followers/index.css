@@ -17,6 +17,18 @@
     left: 3%;
 }
 
+.username{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    align-items: center;
+}
+
+.all2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .post
 {
     color: aliceblue;
@@ -79,4 +91,17 @@
         border: none;
         margin-left: 10px;
     }
+
+    .username{
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 20px;
+        align-items: center;
+    }
+    
+    .all2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
 }

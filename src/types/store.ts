@@ -63,4 +63,4 @@ export interface LoginAction {
 }
 
 
-export type Actions = NewUserAction | NavigationAction | SetUserCredentialsAction | LoginAction | EditProfileAction; //|
+export type Actions = NewUserAction | NavigationAction | SetUserCredentialsAction | LoginAction | EditProfileAction ; //|

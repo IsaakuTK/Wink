@@ -23,7 +23,6 @@ export const reducer = (Action: Actions, prevState: AppState) => {
 
 
       case SomeActionsofls.LOGIN:
-        
         prevState.user = payload
         return prevState
 

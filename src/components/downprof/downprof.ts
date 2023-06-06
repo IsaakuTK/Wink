@@ -1,6 +1,7 @@
-import { navigate, setUserCredentials } from '../../store/actions';
+import { loginU, navigate, setUserCredentials } from '../../store/actions';
 import { appState, dispatch } from '../../store/index';
 import { Screens } from '../../types/store';
+import firebase from '../../utils/firebase';
 import styles from './index.css';
 
 class Downprof extends HTMLElement{
@@ -50,6 +51,9 @@ class Downprof extends HTMLElement{
                 const b2 = this.ownerDocument.createElement("button");
                 b2.className="share"
                 b2.textContent="Share profile"
+                b2.addEventListener('click', async ()=>{
+                    dispatch(await loginU())
+                })
 
                 const b3 = this.ownerDocument.createElement("button");
                 b3.className="out"

@@ -28,7 +28,7 @@ export const newUser = (user:User): NewUserAction =>{
 export const loginU = async (): Promise<LoginAction> =>{
 
   const user = await firebase.GetUser()
-  
+  console.log(user)
   return{
       action: SomeActionsofls.LOGIN,
       payload: user,
@@ -41,6 +41,6 @@ export const editProfile = async (user:User): Promise<EditProfileAction> =>{
 
   return{
       action: UserActions.EDIT,
-      payload: user,
-  }
+        payload: user,
+    }
 }

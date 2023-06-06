@@ -1,7 +1,7 @@
 import styles from './index.css';
 import { navigate } from "../../store/actions";
 import { Screens } from "../../types/store";
-import { dispatch } from '../../store/index';
+import { appState, dispatch } from '../../store/index';
 
 class Bar extends HTMLElement{
 
@@ -51,8 +51,9 @@ class Bar extends HTMLElement{
                 icon.className="icon";
                 icon.addEventListener("click", this.publishedbutton);
 
-                const perf = this.ownerDocument.createElement("button");
-                perf.className="perf";
+                const perf = this.ownerDocument.createElement("img");
+                perf.className="prof"
+                perf.src=appState.user.image;
                 perf.addEventListener("click", this.porfilebutton);
 
                 things.appendChild(icon);

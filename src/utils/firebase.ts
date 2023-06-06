@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, orderBy, query, onSnapshot, where, setDoc, doc} from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDoc, orderBy, query, onSnapshot, where, setDoc, doc} from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -68,7 +68,7 @@ const db = getFirestore(app);
 
 const AddUser = async (user: any) =>{
   try {
-    user.uid = appState.userCredentials.uid
+    user.uid = appState.user.uid
     await setDoc(doc(db, "users", user.uid), user)
     return true
   } catch (e) {
@@ -85,16 +85,16 @@ const GetUser = async(): Promise<User> =>{
     image: "",
     password: "",
   };
-  const theuser=query(collection(db,"users"))
-  const q = query(theuser, where("users", "==", appState.userCredentials.uid));
-  const all = await getDocs(q);
-  all.forEach((u) => {
-    console.log(`${u.id} => ${u.data()}`);
-    resp=({
-      ...u.data()
-    }as User)
-  });
-  return resp
+  const docRef = doc(db, "users", appState.user.uid);
+
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    resp = (docSnap.data() as User);
+  } else {
+    console.log("No such document!");
+  }
+  return  resp
 }
 
 
@@ -103,7 +103,7 @@ const EditProfile = async (u: User) =>{
     await setDoc (doc(db, "users", u.uid), u)
     return true
   } catch (e) {
-    console.error("Error editing document: ", e);
+    console.error("Error: ", e);
     return false
   }
 }

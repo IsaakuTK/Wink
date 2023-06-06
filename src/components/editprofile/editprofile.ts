@@ -1,15 +1,15 @@
-import { dispatch } from '../../store';
-import { navigate } from '../../store/actions';
+import { appState, dispatch } from '../../store';
+import { editProfile, navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
 import { User } from '../../types/user';
 import styles from './editprofile.css';
 
 const credentials: User = {
-    uid: "123",
+    uid: appState.user.uid,
     username: "",
-    email: "",
+    email: appState.user.email,
     image: "https://t3.ftcdn.net/jpg/00/64/67/80/360_F_64678017_zUpiZFjj04cnLri7oADnyMH0XBYyQghG.jpg",
-    password: "",
+    password: appState.user.password,
   };
 
 class Editprofile extends HTMLElement{
@@ -44,21 +44,21 @@ class Editprofile extends HTMLElement{
                 iusername.addEventListener("change", (e:any)=>credentials.username = e.target.value);
                 container.appendChild(iusername)
 
-                const subtittle = this.ownerDocument.createElement("h3")
-                subtittle.innerText = "New profile image"
-                container.appendChild(subtittle)
+                const img = this.ownerDocument.createElement("h3")
+                img.innerText = "New profile image"
+                container.appendChild(img)
 
                 const url = this.ownerDocument.createElement("input")
                 url.placeholder = "Paste the URL"
-                url.type = "url"
-                this.shadowRoot?.appendChild (url);
+                url.addEventListener("change", (e:any)=>credentials.image = e.target.value);
                 container.appendChild(url)
 
 
                 const button = this.ownerDocument.createElement("button");
                 button.innerText = "Confirm Changes"
-                button.addEventListener("click", () =>{
+                button.addEventListener("click", async () =>{
                         dispatch(navigate(Screens.DASHBOARD))
+                        dispatch(await editProfile(credentials))
                     } )
                 container.appendChild(button)
 
