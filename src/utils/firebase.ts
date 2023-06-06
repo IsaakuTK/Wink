@@ -86,6 +86,7 @@ const GetUser = async(): Promise<User> =>{
     image: "",
     password: "",
   };
+  
   const docRef = doc(db, "users", appState.user.uid);
 
   const docSnap = await getDoc(docRef);
@@ -119,6 +120,7 @@ const CreatePost = async (post: Post) =>{
     return false
   }
 }
+
 
 export default {
   registerUser,

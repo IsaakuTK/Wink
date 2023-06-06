@@ -44,9 +44,11 @@ export default class Profile extends HTMLElement{
 
             const follo = this.ownerDocument.createElement("my-followers") as Followers;
             follo.className = "followers";
+            
             follo.setAttribute(Attributes.image, appState.user.image);
             follo.setAttribute(Attributes.username, appState.user.username);
             
+        
             const follow = this.ownerDocument.createElement("my-downprof");
             follow.className = "downprof";
 

@@ -2,7 +2,7 @@ import Storage, { PersistanceKeys } from "../utils/storage";
 import { Observer, AppState, Screens, Actions } from "../types/store";
 import { reducer } from "./reducer";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { navigate, setUserCredentials} from "./actions";
+import { loginU, navigate, setUserCredentials} from "./actions";
 import { initializeApp } from "firebase/app";
 import firebaseConfig from "../utils/firebaseConfig";
 

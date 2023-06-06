@@ -33,6 +33,7 @@ export const LogOut =  (): LogoutAction =>{
   setUserCredentials('')  
   sessionStorage.clear()
   navigate(Screens.DISPLAY)
+  
   location.reload()
 }
 
@@ -43,10 +44,9 @@ export const LogOut =  (): LogoutAction =>{
 }
 
 export const loginU = async (): Promise<LoginAction> =>{
-  onAuthStateChanged
   const user = await firebase.GetUser()
-  location.reload()
-  console.log(user)
+  console.log("suser",user)
+  //location.reload()
   return{
       action: SomeActionsofls.LOGIN,
       payload: user,
