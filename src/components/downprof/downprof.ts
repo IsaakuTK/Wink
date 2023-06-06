@@ -1,4 +1,4 @@
-import { LogOut, loginU, navigate, setUserCredentials } from '../../store/actions';
+import { LogOut, navigate, setUserCredentials } from '../../store/actions';
 import { appState, dispatch } from '../../store/index';
 import { Screens } from '../../types/store';
 import firebase from '../../utils/firebase';
@@ -8,7 +8,6 @@ class Downprof extends HTMLElement{
     constructor(){
         super();
         this.attachShadow({mode:"open"});
-        
     }
 
 
@@ -18,7 +17,9 @@ class Downprof extends HTMLElement{
 
 
       bye(){
+        dispatch(navigate(Screens.DISPLAY))
         dispatch(LogOut())    
+        
       }
 
       edit(){

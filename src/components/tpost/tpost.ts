@@ -2,22 +2,17 @@ import styles from './index.css';
 
 export enum Attribute {
     "profile" = "profile",
-    "user" = "user",
+    "username" = "username",
     "description" = "description",
     "image" = "image",
-    "countlikes" = "countlikes",
-    "countcomments" = "countcomments",
-    "countrepost" = "countrepost"
 }
 
 class Tpost extends HTMLElement{
     profile?: string;
-    user?: string;
+    username?: string;
     description?: string;
     image?: string;
-    countlikes?: number;
-    countcomments?: number;
-    countrepost?: number;
+
 
     constructor(){
         super();
@@ -27,12 +22,9 @@ class Tpost extends HTMLElement{
     static get observedAttributes(){
         const attrs: Record<Attribute, null> = {
             profile: null,
-            user: null,
+            username: null,
             description: null,
             image: null,
-            countlikes: null,
-            countcomments: null,
-            countrepost: null
         };
         return Object.keys(attrs);
     }
@@ -48,17 +40,6 @@ class Tpost extends HTMLElement{
         newValue: string | undefined
         ) {
             switch (propName) {
-                case Attribute.countlikes:
-                this.countlikes = newValue ? Number(newValue) : undefined;
-                break;
-
-                case Attribute.countcomments:
-                this.countcomments = newValue ? Number(newValue) : undefined;
-                break;
-
-                case Attribute.countrepost:
-                this.countrepost = newValue ? Number(newValue) : undefined;
-                break;
                 
                 default:
                 this[propName] = newValue;
@@ -76,7 +57,7 @@ class Tpost extends HTMLElement{
                     
                         <section class = "up">
                         <img class="prof" src="${this.profile}">
-                        <p class = "us">${this.user}</p>
+                        <p class = "us">${this.username}</p>
                         </section>    
                         <p class="ndd">${this.description}</p>
                     </section>
@@ -84,15 +65,15 @@ class Tpost extends HTMLElement{
                     <section class = "nd">  
                     <section class="s">
                     <button class="likes"></button>
-                    <p class="p1">${this.countlikes}</p>
+                
                     </section>
                     <section class="s">
                     <button class="comments"></button>
-                    <p class="p1">${this.countcomments}</p>
+    
                     </section>
                     <section class="s">
                     <button class="repost"></button>
-                    <p class="p1">${this.countrepost}</p>
+    
                     </section>
                     </section>
                 </section>

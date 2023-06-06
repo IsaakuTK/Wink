@@ -1,5 +1,5 @@
 import styles from './Editprofile.css';
-import dataR from "../../services/apitryR";
+import dataR from "../../mocks/dataR";
 import Reel, {Attribute} from "../../components/reel/reel";
 
 
@@ -13,9 +13,8 @@ export default class Editprofile extends HTMLElement{
         }
 
     async connectedCallback() {
-        const data = await dataR.get();
 
-        data?.forEach((user) => {
+        dataR?.forEach((user) => {
             const reels = this.ownerDocument.createElement(
                 "my-reel"
                 ) as Reel;

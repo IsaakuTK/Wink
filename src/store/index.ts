@@ -2,7 +2,7 @@ import Storage, { PersistanceKeys } from "../utils/storage";
 import { Observer, AppState, Screens, Actions } from "../types/store";
 import { reducer } from "./reducer";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { loginU, navigate, setUserCredentials} from "./actions";
+import { getUs, navigate, setUserCredentials} from "./actions";
 import { initializeApp } from "firebase/app";
 import firebaseConfig from "../utils/firebaseConfig";
 
@@ -14,6 +14,7 @@ onAuthStateChanged(auth, async(u:any) => {
   if (await (u)) {
     u !== null ? dispatch(setUserCredentials(u)) : '';
     appState.user.uid = u.uid
+    dispatch(await getUs())
     dispatch(navigate(Screens.DASHBOARD));
   } else {
     dispatch(navigate(Screens.DISPLAY));

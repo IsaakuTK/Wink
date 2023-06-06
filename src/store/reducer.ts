@@ -1,4 +1,4 @@
-import { Actions, AppState, NavigationActions, SomeActionsofls, UserActions } from "../types/store";
+import { Actions, AppState, NavigationActions, PostAactions, SomeActionsofls, UserActions } from "../types/store";
 
 export const reducer = (Action: Actions, prevState: AppState) => {
   const { action, payload } = Action; 
@@ -31,6 +31,21 @@ export const reducer = (Action: Actions, prevState: AppState) => {
 
        case UserActions.EDIT:
         prevState.user = payload
+            return prevState
+
+
+      case UserActions.LOGOUT:
+        return {
+          ...prevState , userCredentials:""
+      }
+
+        case PostAactions.CREATEPOST:
+          prevState.posts = [...prevState.posts, payload]
+          return prevState
+
+            
+      case PostAactions.GETPOSTS:
+        prevState.posts = payload
             return prevState
   }
 };

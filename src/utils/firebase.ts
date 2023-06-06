@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDoc, orderBy, query, onSnapshot, where, setDoc, doc} from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDoc, getDocs, orderBy, query, onSnapshot, where, setDoc, doc} from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 
 import firebaseConfig from "./firebaseConfig";
+
 import { appState, dispatch } from "../store";
 import { navigate } from "../store/actions";
 import { Screens } from "../types/store";
@@ -34,7 +35,7 @@ const registerUser = async ({
       password
     );
     console.log(userCredential.user);
-    dispatch(navigate(Screens.LOGIN));
+
     return true;
   } catch (error: any) {
     const errorCode = error.code;
@@ -53,7 +54,9 @@ const loginUser = async ({
 })  => {
   setPersistence(auth, browserSessionPersistence)
   .then(() => {
+    dispatch(navigate(Screens.DASHBOARD));
     return signInWithEmailAndPassword(auth,email,password);
+    
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -86,7 +89,6 @@ const GetUser = async(): Promise<User> =>{
     image: "",
     password: "",
   };
-  
   const docRef = doc(db, "users", appState.user.uid);
 
   const docSnap = await getDoc(docRef);
@@ -122,6 +124,21 @@ const CreatePost = async (post: Post) =>{
 }
 
 
+const GetPosts = async(): Promise<Post[]> =>{
+  const all: Post[] = [];
+
+  const q=query(collection(db,"posts"), orderBy("createdAt"))
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${doc.data()}`);
+    all.push({
+      ...doc.data()
+    }as Post)
+  });
+  return all
+}
+
+
 export default {
   registerUser,
   loginUser,
@@ -129,5 +146,6 @@ export default {
   GetUser,
   EditProfile,
   onAuthStateChanged,
-  CreatePost
+  CreatePost,
+  GetPosts,
 };

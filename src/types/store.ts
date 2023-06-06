@@ -36,7 +36,6 @@ export enum UserActions {
   "NEWUSER" = "NEWUSER",
   "SETUSERCREDETIALS" = "SETUSERCREDETIALS",
   "EDIT" = "EDIT",
-  "CREATEPOST" = "CREATEPOST",
   "LOGOUT" = "LOGOUT",
 }
 
@@ -59,13 +58,19 @@ export enum SomeActionsofls {
   "LOGIN" = "LOGIN",
 }
 
+export enum PostAactions {
+  "CREATEPOST" = "CREATEPOST",
+  "GETPOSTS" = "GETPOSTS",
+}
+
+
 export interface LoginAction {
   action: SomeActionsofls.LOGIN,
   payload: User
 }
 
 export interface CreaPostAction {
-  action: UserActions.CREATEPOST,
+  action: PostAactions.CREATEPOST,
   payload: Post
 }
 
@@ -74,5 +79,12 @@ export interface LogoutAction {
   payload: void
 }
 
+export interface GetPostsAction {
+  [x: string]: any;
+  action: PostAactions.GETPOSTS,
+  payload: Post[]
+}
 
-export type Actions = NewUserAction | NavigationAction | SetUserCredentialsAction | LoginAction | EditProfileAction | CreaPostAction | LogoutAction;
+
+
+export type Actions = NewUserAction | NavigationAction | SetUserCredentialsAction | LoginAction | EditProfileAction | CreaPostAction | LogoutAction | GetPostsAction;

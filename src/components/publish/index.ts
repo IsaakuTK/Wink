@@ -1,7 +1,16 @@
-import { dispatch } from '../../store';
-import { navigate } from '../../store/actions';
+import { appState, dispatch } from '../../store';
+import { createPost, navigate } from '../../store/actions';
+import { Post } from '../../types/posts';
 import { Screens } from '../../types/store';
 import styles from './index.css';
+
+const post: Post = {
+    id: appState.user.uid,
+    imageprofile: appState.user.image,
+    username: appState.user.username,
+    description:  "",
+    image:  "",
+  };
 
 class Publish extends HTMLElement{
 
@@ -32,7 +41,7 @@ class Publish extends HTMLElement{
 
                 const descs = this.ownerDocument.createElement("input")
                 descs.placeholder = "Description"
-                this.shadowRoot?.appendChild (descs);
+                descs.addEventListener("change", (e:any)=>post.description = e.target.value);
                 container.appendChild(descs)
 
                 const subtittle = this.ownerDocument.createElement("h3")
@@ -42,13 +51,14 @@ class Publish extends HTMLElement{
                 const url = this.ownerDocument.createElement("input")
                 url.placeholder = "Paste the URL"
                 url.type = "url"
-                this.shadowRoot?.appendChild (url);
+                url.addEventListener("change", (e:any)=>post.image = e.target.value);
                 container.appendChild(url)
 
 
                 const button = this.ownerDocument.createElement("button");
                 button.innerText = "Share Post"
-                button.addEventListener("click", () =>{
+                button.addEventListener("click", async () =>{
+                        dispatch(await createPost(post))
                         dispatch(navigate(Screens.DASHBOARD))
                     } )
                 container.appendChild(button)

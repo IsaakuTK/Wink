@@ -1,5 +1,4 @@
 import styles from './profile.css';
-import datas from "../../services/apitry"
 import  Tpost, { Attribute } from "../../components/tpost/tpost";
 import  Followers, { Attributes } from "../../components/followers/followers";
 import { appState } from '../../store';
@@ -15,20 +14,15 @@ export default class Profile extends HTMLElement{
         }
 
     async connectedCallback() {
-        const data =  await datas.get();
         
-        data?.forEach((user) => {
+        appState.posts?.forEach((user) => {
             const profileCard = this.ownerDocument.createElement(
                 "my-post"
                 ) as Tpost;
-                profileCard.setAttribute(Attribute.profile, user.profile);
-                profileCard.setAttribute(Attribute.user, String(user.user));
+                profileCard.setAttribute(Attribute.profile, user.imageprofile);
+                profileCard.setAttribute(Attribute.username, String(user.username));
                 profileCard.setAttribute(Attribute.description, user.description)
                 profileCard.setAttribute(Attribute.image, user.image);
-                profileCard.setAttribute(Attribute.countlikes, String(user.countlikes));
-                profileCard.setAttribute(Attribute.countcomments, String(user.countcomments));
-                profileCard.setAttribute(Attribute.countrepost, String(user.countrepost));
-                profileCard.addEventListener("click", () => console.log(user.countlikes));
                 this.posts.push(profileCard);
             });
 
@@ -44,11 +38,9 @@ export default class Profile extends HTMLElement{
 
             const follo = this.ownerDocument.createElement("my-followers") as Followers;
             follo.className = "followers";
-            
             follo.setAttribute(Attributes.image, appState.user.image);
             follo.setAttribute(Attributes.username, appState.user.username);
             
-        
             const follow = this.ownerDocument.createElement("my-downprof");
             follow.className = "downprof";
 

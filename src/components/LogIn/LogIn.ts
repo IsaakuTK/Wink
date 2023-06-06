@@ -1,4 +1,4 @@
-import { loginU, navigate } from "../../store/actions";
+import { navigate } from "../../store/actions";
 import { dispatch } from "../../store/index";
 import { Screens } from "../../types/store";
 import firebase from "../../utils/firebase";
@@ -22,8 +22,6 @@ export default class login extends HTMLElement{
 
       async handleLoginButton(){
         await firebase.loginUser(credentials);
-        dispatch(await loginU())
-        
       }
 
       render(){

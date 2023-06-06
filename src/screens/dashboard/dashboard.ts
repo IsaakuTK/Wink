@@ -1,10 +1,11 @@
-import data from "../../services/apitry";
 import  Tpost, { Attribute } from "../../components/tpost/tpost";
 import dataTs from "../../services/apitryT";
 import suggested, { Atributos} from "../../components/suggested/index";
 import dataSs from "../../services/apitryS";
 import trending, {attribute} from "../../components/trending/index";
 import styles from './dashboad.css';
+import { getPosts } from "../../store/actions";
+import { appState, dispatch } from "../../store";
 
 
 
@@ -18,26 +19,17 @@ export default class Dashboard extends HTMLElement{
     constructor(){
         super();
         this.attachShadow({mode:"open"});
+
         }
 
     async connectedCallback() {
-
-        const dat = await data.get();
-        dat?.forEach((user) => {
-            const profileCard = this.ownerDocument.createElement(
-                "my-post"
-                ) as Tpost;
-                profileCard.setAttribute(Attribute.profile, user.profile);
-                profileCard.setAttribute(Attribute.user, String(user.user));
-                profileCard.setAttribute(Attribute.description, user.description)
-                profileCard.setAttribute(Attribute.image, user.image);
-                profileCard.setAttribute(Attribute.countlikes, String(user.countlikes));
-                profileCard.setAttribute(Attribute.countcomments, String(user.countcomments));
-                profileCard.setAttribute(Attribute.countrepost, String(user.countrepost));
-                profileCard.addEventListener("click", () => console.log(user.countlikes));
-                console.log(user.countlikes)
-                this.posts.push(profileCard);
-            });
+            if(appState.posts.length === 0){
+                dispatch(await getPosts());
+                this.render();
+            }else{
+                this.render()
+            }
+                
 
             const dataT = await dataTs.get();
 
@@ -66,12 +58,20 @@ export default class Dashboard extends HTMLElement{
     render() {
         
         if (this.shadowRoot) {
-                 
             const post = this.ownerDocument.createElement("section")
             post.className = "post";
-            for (let index = 0; index < this.posts.length; index++) {
-                post.appendChild(this.posts[index]);
-            }  
+            appState.posts?.forEach((P) => {
+                const profileCard = this.ownerDocument.createElement(
+                    "my-post"
+                    ) as Tpost;
+                    profileCard.setAttribute(Attribute.profile, String(P.imageprofile));
+                    profileCard.setAttribute(Attribute.username, String(P.username));
+                    profileCard.setAttribute(Attribute.description, P.description)
+                    profileCard.setAttribute(Attribute.image, P.image);
+                    post.appendChild(profileCard);
+                });
+                
+            
 
             const an = this.ownerDocument.createElement("my-bar")
             this.shadowRoot?.appendChild(an);
