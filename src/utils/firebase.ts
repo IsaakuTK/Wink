@@ -9,7 +9,7 @@ import {
   onAuthStateChanged
 } from "firebase/auth";
 
-import {firebaseConfig} from "../firebaseconfig";
+import firebaseConfig from "./firebaseConfig";
 import { appState, dispatch } from "../store";
 import { navigate } from "../store/actions";
 import { Screens } from "../types/store";
@@ -17,7 +17,6 @@ import { User } from "../types/user";
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-
 
 
 const registerUser = async ({

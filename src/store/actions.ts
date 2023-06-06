@@ -1,6 +1,5 @@
 import { User } from "../types/user";
 import { EditProfileAction, LoginAction, NavigationAction, NavigationActions, NewUserAction, Screens, SetUserCredentialsAction, SomeActionsofls, UserActions } from "../types/store";
-import { appState, dispatch } from ".";
 import firebase from "../utils/firebase";
 
 export const navigate = (screen:Screens): NavigationAction =>{
@@ -27,6 +26,7 @@ export const newUser = (user:User): NewUserAction =>{
 
 
 export const loginU = async (): Promise<LoginAction> =>{
+
   const user = await firebase.GetUser()
   
   return{

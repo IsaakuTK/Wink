@@ -7,7 +7,7 @@ import { navigate, setUserCredentials} from "./actions";
 
 onAuthStateChanged(auth, async(u:any) => {
   
-  if (u) {
+  if (await (u)) {
     u !== null ? dispatch(setUserCredentials(u)) : '';
     appState.user.email = String(u.email);
     appState.user.uid = u.uid;
@@ -41,7 +41,7 @@ export let appState = Storage.get<any>({
 
 let observers: Observer[] = [];
 
-const persistStore = (state: any) =>
+const persistStore = (state: AppState) =>
   Storage.set({ key: PersistanceKeys.STORE, value: state });
 
 const notifyObservers = () => observers.forEach((o) => o.render());

@@ -1,5 +1,5 @@
 {
-  "name": "Wink",
+  "name": "taller2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,16 +7,24 @@
     "start": "serve",
     "build": "webpack --watch"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IsaakuTK/taller2.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IsaakuTK/taller2/issues"
+  },
+  "homepage": "https://github.com/IsaakuTK/taller2#readme",
   "devDependencies": {
     "css-loader": "^6.7.3",
     "serve": "^14.2.0",
     "ts-loader": "^9.4.2",
-    "typescript": "^5.0.4",
-    "webpack": "^5.81.0",
-    "webpack-cli": "^5.0.2"
+    "typescript": "^5.0.2",
+    "webpack": "^5.85.1",
+    "webpack-cli": "^5.0.1"
   },
   "dependencies": {
     "firebase": "^9.22.1"
