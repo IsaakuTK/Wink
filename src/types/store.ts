@@ -36,6 +36,8 @@ export enum UserActions {
   "NEWUSER" = "NEWUSER",
   "SETUSERCREDETIALS" = "SETUSERCREDETIALS",
   "EDIT" = "EDIT",
+  "CREATEPOST" = "CREATEPOST",
+  "LOGOUT" = "LOGOUT",
 }
 
 export interface NewUserAction {
@@ -62,5 +64,15 @@ export interface LoginAction {
   payload: User
 }
 
+export interface CreaPostAction {
+  action: UserActions.CREATEPOST,
+  payload: Post
+}
 
-export type Actions = NewUserAction | NavigationAction | SetUserCredentialsAction | LoginAction | EditProfileAction ; //|
+export interface LogoutAction {
+  action: UserActions.LOGOUT,
+  payload: void
+}
+
+
+export type Actions = NewUserAction | NavigationAction | SetUserCredentialsAction | LoginAction | EditProfileAction | CreaPostAction | LogoutAction;

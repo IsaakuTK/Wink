@@ -1,6 +1,9 @@
 import { User } from "../types/user";
-import { EditProfileAction, LoginAction, NavigationAction, NavigationActions, NewUserAction, Screens, SetUserCredentialsAction, SomeActionsofls, UserActions } from "../types/store";
+import { CreaPostAction, EditProfileAction, LoginAction, LogoutAction, NavigationAction, NavigationActions, NewUserAction, Screens, SetUserCredentialsAction, SomeActionsofls, UserActions } from "../types/store";
 import firebase from "../utils/firebase";
+import { Post } from "../types/posts";
+import { appState } from ".";
+import { onAuthStateChanged } from "firebase/auth";
 
 export const navigate = (screen:Screens): NavigationAction =>{
   return{
@@ -24,10 +27,25 @@ export const newUser = (user:User): NewUserAction =>{
   }
 }
 
+export const LogOut =  (): LogoutAction =>{
+
+  if(appState.userCredentials !==null || ''){
+  setUserCredentials('')  
+  sessionStorage.clear()
+  navigate(Screens.DISPLAY)
+  location.reload()
+}
+
+  return{
+      action: UserActions.LOGOUT,
+      payload: undefined,
+  }
+}
 
 export const loginU = async (): Promise<LoginAction> =>{
-
+  onAuthStateChanged
   const user = await firebase.GetUser()
+  location.reload()
   console.log(user)
   return{
       action: SomeActionsofls.LOGIN,
@@ -42,5 +60,15 @@ export const editProfile = async (user:User): Promise<EditProfileAction> =>{
   return{
       action: UserActions.EDIT,
         payload: user,
+    }
+}
+
+export const createPost = async (post:Post): Promise<CreaPostAction> =>{
+
+  await firebase.CreatePost(post)
+
+  return{
+      action: UserActions.CREATEPOST,
+        payload: post,
     }
 }

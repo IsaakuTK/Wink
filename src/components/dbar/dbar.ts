@@ -1,9 +1,10 @@
-import { navigate } from "../../store/actions";
-import { dispatch } from "../../store/index";
-import { Screens } from "../../types/store";
-import styles from "./downbar2.css"
 
-export default class downbart extends HTMLElement {
+import { dispatch } from "../../store";
+import { navigate } from "../../store/actions";
+import { Screens } from "../../types/store";
+import styles from "./dbar.css"
+
+export default class Dbar extends HTMLElement {
 
     constructor() {
         super();
@@ -56,4 +57,4 @@ export default class downbart extends HTMLElement {
         }
     }
 
-    customElements.define("my-downbart", downbart);
+    customElements.define("my-downbart", Dbar);

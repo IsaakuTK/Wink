@@ -1,4 +1,4 @@
-import { loginU, navigate, setUserCredentials } from '../../store/actions';
+import { LogOut, loginU, navigate, setUserCredentials } from '../../store/actions';
 import { appState, dispatch } from '../../store/index';
 import { Screens } from '../../types/store';
 import firebase from '../../utils/firebase';
@@ -17,16 +17,7 @@ class Downprof extends HTMLElement{
 
 
       bye(){
-        dispatch(setUserCredentials(''))    
-        sessionStorage.clear()
-        dispatch(navigate(Screens.LOGIN))
-        location.reload()
-        // const auth = getAuth();
-        // signOut(auth).then(() => {
-        // console.log("BYE")
-        // }).catch((error) => {
-        // console.error(error)
-        // });
+        dispatch(LogOut())    
       }
 
       edit(){
@@ -50,9 +41,9 @@ class Downprof extends HTMLElement{
 
                 const b2 = this.ownerDocument.createElement("button");
                 b2.className="share"
-                b2.textContent="Share profile"
+                b2.textContent="Follow"
+                b2.style.display = 'none';
                 b2.addEventListener('click', async ()=>{
-                    dispatch(await loginU())
                 })
 
                 const b3 = this.ownerDocument.createElement("button");

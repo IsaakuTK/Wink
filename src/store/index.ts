@@ -13,6 +13,7 @@ onAuthStateChanged(auth, async(u:any) => {
   
   if (await (u)) {
     u !== null ? dispatch(setUserCredentials(u)) : '';
+    appState.user.uid = u.uid
     dispatch(navigate(Screens.DASHBOARD));
   } else {
     dispatch(navigate(Screens.DISPLAY));

@@ -3,7 +3,7 @@ import { dispatch } from "../../store/index";
 import { Screens } from "../../types/store";
 import styles from "./downbar.css"
 
-export default class downbar extends HTMLElement {
+export default class Downbar extends HTMLElement {
 
     constructor() {
         super();
@@ -56,4 +56,4 @@ export default class downbar extends HTMLElement {
         }
     }
 
-    customElements.define("my-downbar", downbar);
+    customElements.define("my-downbar", Downbar);

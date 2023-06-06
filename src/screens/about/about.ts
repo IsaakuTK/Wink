@@ -30,7 +30,7 @@ export default class About extends HTMLElement{
 
             const text = this.ownerDocument.createElement("p")
             text.className = "text";
-            text.textContent = "We are a social media that wants to connect our users";
+            text.textContent = "We are a social media that wants to connect our users, Enjoy The Experience!";
             all.appendChild(text)
 
             this.shadowRoot.appendChild(all)
