@@ -3,4 +3,5 @@ export interface Post  {
   imageprofile: string,
   username: string,
   description: string,
+  image: string,
 }
