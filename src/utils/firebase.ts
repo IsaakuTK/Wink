@@ -14,6 +14,7 @@ import { appState, dispatch } from "../store";
 import { navigate } from "../store/actions";
 import { Screens } from "../types/store";
 import { User } from "../types/user";
+import { Post } from "../types/posts";
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
@@ -33,7 +34,7 @@ const registerUser = async ({
       password
     );
     console.log(userCredential.user);
-    dispatch(navigate(Screens.DASHBOARD));
+    dispatch(navigate(Screens.LOGIN));
     return true;
   } catch (error: any) {
     const errorCode = error.code;
@@ -85,7 +86,7 @@ const GetUser = async(): Promise<User> =>{
     image: "",
     password: "",
   };
-  const docRef = doc(db, "users", appState.user.uid);
+  const docRef = doc(db, "users", auth.uid);
 
   const docSnap = await getDoc(docRef);
 
@@ -108,11 +109,23 @@ const EditProfile = async (u: User) =>{
   }
 }
 
+const CreatePost = async (post: Post) =>{
+  try {
+  const where = collection(db, "posts")
+    await addDoc(where,{...post, createdAt: new Date()});
+    return true
+  } catch (e) {
+    console.error("Error: ", e);
+    return false
+  }
+}
+
 export default {
   registerUser,
   loginUser,
   AddUser,
   GetUser,
   EditProfile,
-  onAuthStateChanged
+  onAuthStateChanged,
+  CreatePost
 };
