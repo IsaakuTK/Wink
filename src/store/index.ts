@@ -4,7 +4,7 @@ import { reducer } from "./reducer";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getUs, navigate, setUserCredentials} from "./actions";
 import { initializeApp } from "firebase/app";
-import firebaseConfig from "../utils/firebaseConfig";
+import { firebaseConfig } from "../utils/firebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

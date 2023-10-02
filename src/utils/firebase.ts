@@ -9,7 +9,7 @@ import {
   onAuthStateChanged
 } from "firebase/auth";
 
-import firebaseConfig from "./firebaseConfig";
+import {firebaseConfig} from "./firebaseConfig";
 
 import { appState, dispatch } from "../store";
 import { navigate } from "../store/actions";

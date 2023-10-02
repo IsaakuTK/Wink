@@ -105,6 +105,7 @@ export default class Dashboard extends HTMLElement{
 
             const all = this.ownerDocument.createElement("section")
             all.className = "all";
+            
             all.appendChild(trend);
             all.appendChild(post);
             all.appendChild(sugest);

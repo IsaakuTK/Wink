@@ -21,6 +21,7 @@ return {
 }
 
 export const newUser = (user:User): NewUserAction =>{
+  navigate(Screens.DASHBOARD)
   return{
       action: UserActions.NEWUSER,
       payload: user,
